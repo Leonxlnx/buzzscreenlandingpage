@@ -6,16 +6,22 @@ export default function Hero() {
             <div className="container hero-content">
                 <div className="badge">
                     <span className="badge-dot"></span>
-                    New 3.0 Update
+                    Now in early access
                 </div>
                 <h1>Record. Edit. Share.<br /><span className="gradient-text">In seconds.</span></h1>
-                <p className="subhead">Record your screen and camera with one click. Share instantly with a link.</p>
+                <p className="subhead">Record fast. Make it clear with simple edits. Share instantly.</p>
                 <div className="cta-group">
                     <a href="#" className="btn btn-hero">
-                        Start Recording
+                        Get Started Free
                         <ArrowRight size={18} style={{ marginLeft: 8 }} />
                     </a>
-                    <a href="#" className="btn btn-glass">Download for MacOS</a>
+                </div>
+                <p className="sub-cta">Start for free · No credit card required</p>
+
+                <div className="feature-pills">
+                    <span className="pill">Browser extension</span>
+                    <span className="pill">Cloud editor</span>
+                    <span className="pill">Instant sharing</span>
                 </div>
 
                 <div className="browser-mockup">
@@ -87,21 +93,34 @@ export default function Hero() {
               margin: 0 auto 40px;
               line-height: 1.6;
           }
-          .cta-group { display: flex; justify-content: center; gap: 16px; margin-bottom: 80px; flex-wrap: wrap; }
+          .cta-group { display: flex; justify-content: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
           
-          .btn-glass {
+          .sub-cta {
+              color: var(--text-secondary);
+              font-size: 0.9rem;
+              margin-bottom: 32px;
+              opacity: 0.7;
+          }
+          
+          .feature-pills {
+              display: flex;
+              justify-content: center;
+              gap: 12px;
+              margin-bottom: 60px;
+              flex-wrap: wrap;
+          }
+          .pill {
+              padding: 8px 16px;
               background: rgba(255,255,255,0.03);
-              backdrop-filter: blur(10px);
-              border: 1px solid rgba(255,255,255,0.1);
-              color: white;
-              padding: 14px 28px;
-              border-radius: var(--radius-md);
-              font-weight: 500;
+              border: 1px solid rgba(255,255,255,0.06);
+              border-radius: 100px;
+              font-size: 0.8rem;
+              color: var(--text-secondary);
               transition: all 0.3s;
           }
-          .btn-glass:hover {
-              background: rgba(255,255,255,0.08);
-              border-color: rgba(255,255,255,0.15);
+          .pill:hover {
+              background: rgba(255,255,255,0.06);
+              color: white;
           }
 
           .browser-mockup {

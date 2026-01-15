@@ -4,12 +4,18 @@ export default function Hero() {
     return (
         <section className="hero">
             <div className="container hero-content">
-                <div className="badge">New feature available</div>
+                <div className="badge">
+                    <span className="badge-dot"></span>
+                    New 3.0 Update
+                </div>
                 <h1>Record. Edit. Share.<br /><span className="gradient-text">In seconds.</span></h1>
-                <p className="subhead">Record your screen and camera with one click. Share instantly.</p>
+                <p className="subhead">Record your screen and camera with one click. Share instantly with a link.</p>
                 <div className="cta-group">
-                    <a href="#" className="btn btn-primary">Start Recording <ArrowRight size={16} style={{ marginLeft: 8 }} /></a>
-                    <a href="#" className="btn btn-link">Download for MacOS</a>
+                    <a href="#" className="btn btn-hero">
+                        Start Recording
+                        <ArrowRight size={18} style={{ marginLeft: 8 }} />
+                    </a>
+                    <a href="#" className="btn btn-glass">Download for MacOS</a>
                 </div>
 
                 <div className="browser-mockup">
@@ -17,18 +23,21 @@ export default function Hero() {
                         <div className="dots">
                             <span></span><span></span><span></span>
                         </div>
-                        <div className="address-bar">buzzscreen.com</div>
+                        <div className="address-bar">
+                            buzzscreen.com
+                        </div>
                     </div>
                     <div className="mockup-content">
                         <div className="dashboard-placeholder">
-                            <div className="dash-welcome">
-                                <h2>Welcome back, Tom</h2>
-                                <button className="btn btn-accent-mock">New video</button>
-                            </div>
-                            <div className="dash-videos">
-                                <div className="video-card"></div>
-                                <div className="video-card"></div>
-                                <div className="video-card"></div>
+                            {/* Abstract UI representation */}
+                            <div className="dash-sidebar"></div>
+                            <div className="dash-main">
+                                <div className="dash-header"></div>
+                                <div className="dash-grid">
+                                    <div className="dash-card"></div>
+                                    <div className="dash-card"></div>
+                                    <div className="dash-card"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -36,44 +45,112 @@ export default function Hero() {
             </div>
             <style>{`
           .hero {
-             padding-top: 80px; padding-bottom: 80px; text-align: center; overflow: hidden;
+             padding-top: 80px; 
+             padding-bottom: 100px; 
+             text-align: center; 
+             overflow: hidden;
+             background: radial-gradient(circle at top center, rgba(255,87,34,0.1) 0%, transparent 60%);
           }
-          .hero .badge {
-             display: inline-block; padding: 6px 16px; background: rgba(255, 87, 34, 0.1); color: var(--accent-orange);
-             border-radius: 100px; font-size: 0.85rem; font-weight: 500; margin-bottom: 24px; border: 1px solid rgba(255, 87, 34, 0.2);
+          .badge {
+             display: inline-flex;
+             align-items: center;
+             gap: 8px;
+             padding: 8px 16px;
+             background: #141414;
+             border-radius: 100px;
+             font-size: 0.85rem;
+             color: var(--text-secondary);
+             box-shadow: var(--shadow-soft-out);
+             border: 1px solid rgba(255,255,255,0.02);
+             margin-bottom: 32px;
           }
-          .hero h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 24px; }
+          .badge-dot {
+              width: 8px; height: 8px; background: var(--accent-orange); border-radius: 50%;
+              box-shadow: 0 0 10px var(--accent-orange);
+          }
+          
+          .hero h1 { 
+              font-size: 4.5rem; 
+              line-height: 1.1; 
+              margin-bottom: 24px;
+              text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+          }
           .gradient-text {
-              background: linear-gradient(90deg, #ff5722 0%, #ff9e80 50%, #d500f9 100%);
-              -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+              background: var(--gradient-orange);
+              -webkit-background-clip: text; 
+              -webkit-text-fill-color: transparent;
           }
-          .hero .subhead { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
-          .cta-group { display: flex; justify-content: center; gap: 16px; margin-bottom: 80px; }
+          .cta-group { display: flex; justify-content: center; gap: 20px; margin-bottom: 80px; }
+          
+          .btn-glass {
+              background: rgba(255,255,255,0.03);
+              backdrop-filter: blur(10px);
+              border: 1px solid rgba(255,255,255,0.1);
+              color: white;
+              padding: 12px 24px;
+              border-radius: var(--radius-md);
+              font-weight: 500;
+              transition: all 0.3s;
+          }
+          .btn-glass:hover {
+              background: rgba(255,255,255,0.08);
+          }
 
           .browser-mockup {
-             background: var(--surface); border-radius: 16px 16px 0 0; border: 1px solid var(--border-color); border-bottom: none;
-             max-width: 1000px; margin: 0 auto; box-shadow: 0 20px 60px rgba(0,0,0,0.5); overflow: hidden;
+             background: #141414;
+             border-radius: 20px;
+             border: 1px solid rgba(255,255,255,0.05);
+             max-width: 1000px;
+             margin: 0 auto;
+             box-shadow: 
+                0 30px 60px rgba(0,0,0,0.5),
+                0 0 0 1px rgba(255,255,255,0.05);
+             overflow: hidden;
           }
-          .mockup-header { background: #0f0f0f; padding: 12px 24px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid var(--border-color); }
-          .dots { display: flex; gap: 6px; }
-          .dots span { width: 10px; height: 10px; border-radius: 50%; background-color: #333; }
-          .dots span:nth-child(1) { background: #ff5f57; }
-          .dots span:nth-child(2) { background: #febc2e; }
-          .dots span:nth-child(3) { background: #28c840; }
-          .address-bar { background: #000; flex-grow: 1; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; color: #666; text-align: center; max-width: 400px; margin: 0 auto; }
-          .mockup-content { background: linear-gradient(180deg, #F0F4F8 0%, #FFFFFF 100%); min-height: 500px; padding: 40px; display: flex; justify-content: center; align-items: center; color: #333; }
-          .dashboard-placeholder { width: 100%; max-width: 800px; background: rgba(255,255,255,0.7); border-radius: 8px; height: 400px; border: 1px dashed #ccc; padding: 40px; display: flex; flex-direction: column; gap: 24px; }
-          .dash-welcome { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-          .dash-welcome h2 { font-size: 1.5rem; color: #333; }
-          .btn-accent-mock { background: #333; color: white; padding: 8px 16px; border-radius: 6px; border: none; }
-          .dash-videos { display: flex; gap: 24px; }
-          .video-card { flex: 1; height: 120px; background: #e0e0e0; border-radius: 8px; }
+          .mockup-header { 
+              padding: 16px 24px; 
+              display: flex; 
+              align-items: center; 
+              gap: 20px; 
+              background: rgba(20,20,20,0.5);
+              border-bottom: 1px solid rgba(255,255,255,0.03);
+          }
+          .dots { display: flex; gap: 8px; }
+          .dots span { width: 12px; height: 12px; border-radius: 50%; background: #333; box-shadow: inset 1px 1px 2px rgba(0,0,0,0.5); }
+          .address-bar { 
+              flex: 1;
+              background: #0a0a0a;
+              height: 32px;
+              border-radius: 8px;
+              display: flex; align-items: center; justify-content: center;
+              font-size: 0.8rem; color: #555;
+              box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5), inset -1px -1px 3px rgba(255,255,255,0.05);
+              max-width: 400px; margin: 0 auto;
+          }
+          
+          .mockup-content { 
+              background: linear-gradient(135deg, #1c1c1c 0%, #141414 100%); 
+              min-height: 500px; 
+              padding: 30px;
+          }
+          .dashboard-placeholder {
+              display: flex; gap: 20px; height: 100%;
+          }
+          .dash-sidebar { width: 60px; background: rgba(0,0,0,0.2); border-radius: 12px; }
+          .dash-main { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+          .dash-header { height: 60px; background: rgba(255,255,255,0.03); border-radius: 12px; }
+          .dash-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+          .dash-card { 
+              height: 150px; 
+              background: rgba(255,255,255,0.02); 
+              border-radius: 12px;
+              border: 1px solid rgba(255,255,255,0.02);
+              box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
+          }
 
           @media (max-width: 768px) {
               .hero h1 { font-size: 3rem; }
-              .mockup-content { padding: 20px; min-height: 300px; }
-              .dashboard-placeholder { height: 200px; padding: 20px; }
-              .dash-videos { display: none; }
+              .dash-grid { grid-template-columns: 1fr; }
           }
         `}</style>
         </section>

@@ -45,11 +45,11 @@ export default function Hero() {
             </div>
             <style>{`
           .hero {
-             padding-top: 80px; 
-             padding-bottom: 100px; 
+             padding-top: 160px; /* Account for floating navbar */
+             padding-bottom: 120px; 
              text-align: center; 
              overflow: hidden;
-             background: radial-gradient(circle at top center, rgba(255,87,34,0.1) 0%, transparent 60%);
+             background: radial-gradient(circle at top center, rgba(255,87,34,0.08) 0%, transparent 50%);
           }
           .badge {
              display: inline-flex;
@@ -62,7 +62,7 @@ export default function Hero() {
              color: var(--text-secondary);
              box-shadow: var(--shadow-soft-out);
              border: 1px solid rgba(255,255,255,0.02);
-             margin-bottom: 32px;
+             margin-bottom: 40px;
           }
           .badge-dot {
               width: 8px; height: 8px; background: var(--accent-orange); border-radius: 50%;
@@ -70,8 +70,8 @@ export default function Hero() {
           }
           
           .hero h1 { 
-              font-size: 4.5rem; 
-              line-height: 1.1; 
+              font-size: 4.2rem; 
+              line-height: 1.15; 
               margin-bottom: 24px;
               text-shadow: 0 4px 20px rgba(0,0,0,0.5);
           }
@@ -80,38 +80,46 @@ export default function Hero() {
               -webkit-background-clip: text; 
               -webkit-text-fill-color: transparent;
           }
-          .cta-group { display: flex; justify-content: center; gap: 20px; margin-bottom: 80px; }
+          .hero .subhead {
+              font-size: 1.15rem;
+              color: var(--text-secondary);
+              max-width: 480px;
+              margin: 0 auto 40px;
+              line-height: 1.6;
+          }
+          .cta-group { display: flex; justify-content: center; gap: 16px; margin-bottom: 80px; flex-wrap: wrap; }
           
           .btn-glass {
               background: rgba(255,255,255,0.03);
               backdrop-filter: blur(10px);
               border: 1px solid rgba(255,255,255,0.1);
               color: white;
-              padding: 12px 24px;
+              padding: 14px 28px;
               border-radius: var(--radius-md);
               font-weight: 500;
               transition: all 0.3s;
           }
           .btn-glass:hover {
               background: rgba(255,255,255,0.08);
+              border-color: rgba(255,255,255,0.15);
           }
 
           .browser-mockup {
              background: #141414;
              border-radius: 20px;
              border: 1px solid rgba(255,255,255,0.05);
-             max-width: 1000px;
+             max-width: 960px;
              margin: 0 auto;
              box-shadow: 
-                0 30px 60px rgba(0,0,0,0.5),
+                0 40px 80px rgba(0,0,0,0.5),
                 0 0 0 1px rgba(255,255,255,0.05);
              overflow: hidden;
           }
           .mockup-header { 
-              padding: 16px 24px; 
+              padding: 14px 20px; 
               display: flex; 
               align-items: center; 
-              gap: 20px; 
+              gap: 16px; 
               background: rgba(20,20,20,0.5);
               border-bottom: 1px solid rgba(255,255,255,0.03);
           }
@@ -125,32 +133,32 @@ export default function Hero() {
               display: flex; align-items: center; justify-content: center;
               font-size: 0.8rem; color: #555;
               box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5), inset -1px -1px 3px rgba(255,255,255,0.05);
-              max-width: 400px; margin: 0 auto;
+              max-width: 350px; margin: 0 auto;
           }
           
           .mockup-content { 
               background: linear-gradient(135deg, #1c1c1c 0%, #141414 100%); 
-              min-height: 500px; 
-              padding: 30px;
+              min-height: 400px; 
+              padding: 24px;
           }
           .dashboard-placeholder {
-              display: flex; gap: 20px; height: 100%;
+              display: flex; gap: 16px; height: 100%;
           }
-          .dash-sidebar { width: 60px; background: rgba(0,0,0,0.2); border-radius: 12px; }
-          .dash-main { flex: 1; display: flex; flex-direction: column; gap: 20px; }
-          .dash-header { height: 60px; background: rgba(255,255,255,0.03); border-radius: 12px; }
-          .dash-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+          .dash-sidebar { width: 50px; background: rgba(0,0,0,0.2); border-radius: 10px; }
+          .dash-main { flex: 1; display: flex; flex-direction: column; gap: 16px; }
+          .dash-header { height: 50px; background: rgba(255,255,255,0.03); border-radius: 10px; }
+          .dash-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; flex: 1; }
           .dash-card { 
-              height: 150px; 
               background: rgba(255,255,255,0.02); 
-              border-radius: 12px;
+              border-radius: 10px;
               border: 1px solid rgba(255,255,255,0.02);
-              box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
           }
 
           @media (max-width: 768px) {
-              .hero h1 { font-size: 3rem; }
+              .hero { padding-top: 120px; }
+              .hero h1 { font-size: 2.8rem; }
               .dash-grid { grid-template-columns: 1fr; }
+              .cta-group { flex-direction: column; align-items: center; }
           }
         `}</style>
         </section>

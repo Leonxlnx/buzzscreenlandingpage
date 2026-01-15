@@ -1,8 +1,9 @@
 import { ArrowRight } from 'lucide-react';
+import heroBg from './assets/herobg.webp';
 
 export default function Hero() {
     return (
-        <section className="hero">
+        <section className="hero" style={{ backgroundImage: `url(${heroBg})` }}>
             <div className="container hero-content">
                 <div className="badge">
                     <span className="badge-dot"></span>
@@ -51,11 +52,13 @@ export default function Hero() {
             </div>
             <style>{`
           .hero {
-             padding-top: 160px; /* Account for floating navbar */
+             padding-top: 160px;
              padding-bottom: 120px; 
              text-align: center; 
              overflow: hidden;
-             background: radial-gradient(circle at top center, rgba(255,87,34,0.08) 0%, transparent 50%);
+             background-size: cover;
+             background-position: center top;
+             background-repeat: no-repeat;
           }
           .badge {
              display: inline-flex;

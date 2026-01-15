@@ -1,5 +1,5 @@
 import { ArrowRight } from 'lucide-react';
-import heroBg from './assets/herobg.webp';
+import heroBg from '../assets/herobg.webp';
 
 export default function Hero() {
     return (

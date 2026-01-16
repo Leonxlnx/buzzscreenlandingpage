@@ -46,7 +46,10 @@ export default function Steps() {
                 margin-top: -120px;
                 position: relative;
                 z-index: 1;
-                background: linear-gradient(180deg, #220803 0%, #381101 40%, #0d0d0d 100%);
+                background: 
+                    radial-gradient(circle at 0% 0%, #1c0704 0%, transparent 50%),
+                    radial-gradient(circle at 100% 0%, #1c0704 0%, transparent 50%),
+                    linear-gradient(180deg, #220803 0%, #381101 40%, #0d0d0d 100%);
                 box-shadow: 0 -50px 100px rgba(0,0,0,0.5); /* Smooth transition shadow */
             }
             

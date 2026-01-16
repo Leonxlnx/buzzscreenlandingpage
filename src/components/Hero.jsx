@@ -5,6 +5,10 @@ export default function Hero() {
     return (
         <section className="hero" style={{ backgroundImage: `url(${heroBg})` }}>
             <div className="hero-overlay"></div>
+            <div className="particles">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
             <div className="container hero-content">
                 <div className="badge animate-fade" style={{ animationDelay: '0.3s' }}>
                     <span className="badge-dot"></span>
@@ -101,6 +105,46 @@ export default function Hero() {
               position: relative;
               z-index: 2;
           }
+          
+          /* Floating Particles */
+          @keyframes floatUp {
+              0% { transform: translateY(0) scale(1); opacity: 0; }
+              10% { opacity: 0.8; }
+              90% { opacity: 0.6; }
+              100% { transform: translateY(-600px) scale(0.5); opacity: 0; }
+          }
+          
+          .particles {
+              position: absolute;
+              bottom: 20%;
+              left: 0;
+              right: 0;
+              height: 100px;
+              pointer-events: none;
+              z-index: 1;
+              overflow: visible;
+          }
+          
+          .particles span {
+              position: absolute;
+              width: 6px;
+              height: 6px;
+              background: radial-gradient(circle, rgba(255,122,80,0.9) 0%, rgba(255,87,34,0.4) 100%);
+              border-radius: 50%;
+              box-shadow: 0 0 10px rgba(255,87,34,0.6), 0 0 20px rgba(255,87,34,0.3);
+              animation: floatUp 8s ease-in-out infinite;
+          }
+          
+          .particles span:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 7s; }
+          .particles span:nth-child(2) { left: 20%; animation-delay: 1s; animation-duration: 9s; width: 4px; height: 4px; }
+          .particles span:nth-child(3) { left: 30%; animation-delay: 2s; animation-duration: 6s; }
+          .particles span:nth-child(4) { left: 40%; animation-delay: 0.5s; animation-duration: 8s; width: 5px; height: 5px; }
+          .particles span:nth-child(5) { left: 50%; animation-delay: 3s; animation-duration: 10s; }
+          .particles span:nth-child(6) { left: 60%; animation-delay: 1.5s; animation-duration: 7s; width: 4px; height: 4px; }
+          .particles span:nth-child(7) { left: 70%; animation-delay: 2.5s; animation-duration: 9s; }
+          .particles span:nth-child(8) { left: 80%; animation-delay: 0.8s; animation-duration: 6s; width: 5px; height: 5px; }
+          .particles span:nth-child(9) { left: 85%; animation-delay: 4s; animation-duration: 11s; }
+          .particles span:nth-child(10) { left: 90%; animation-delay: 1.2s; animation-duration: 8s; width: 3px; height: 3px; }
           .badge {
              display: inline-flex;
              align-items: center;

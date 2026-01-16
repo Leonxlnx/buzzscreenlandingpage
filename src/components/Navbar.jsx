@@ -26,6 +26,11 @@ export default function Navbar() {
                 </div>
             </div>
             <style>{`
+          @keyframes navFadeIn {
+              from { opacity: 0; transform: translateY(-20px); }
+              to { opacity: 1; transform: translateY(0); }
+          }
+          
           .header {
              position: fixed;
              top: 24px;
@@ -34,7 +39,9 @@ export default function Navbar() {
              z-index: 100;
              display: flex;
              justify-content: center;
-             pointer-events: none; /* Allow clicking through side areas */
+             pointer-events: none;
+             opacity: 0;
+             animation: navFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
           }
           .header-container { 
              pointer-events: auto; /* Re-enable clicking on the navbar itself */

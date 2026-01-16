@@ -108,8 +108,8 @@ export default function Hero() {
               bottom: 0;
               left: 0;
               right: 0;
-              height: 450px;
-              background: linear-gradient(180deg, transparent 0%, rgba(26,7,3,0.3) 40%, rgba(26,7,3,0.7) 70%, #1a0703 100%);
+              height: 200px;
+              background: linear-gradient(to bottom, transparent, #0d0d0d);
               pointer-events: none;
               z-index: 0;
           }

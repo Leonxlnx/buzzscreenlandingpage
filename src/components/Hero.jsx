@@ -4,28 +4,29 @@ import heroBg from '../assets/herobg.webp';
 export default function Hero() {
     return (
         <section className="hero" style={{ backgroundImage: `url(${heroBg})` }}>
+            <div className="hero-overlay"></div>
             <div className="container hero-content">
-                <div className="badge">
+                <div className="badge animate-fade" style={{ animationDelay: '0.3s' }}>
                     <span className="badge-dot"></span>
                     Now in early access
                 </div>
-                <h1>Record. Edit. Share.<br /><span className="gradient-text">In seconds.</span></h1>
-                <p className="subhead">Record fast. Make it clear with simple edits. Share instantly.</p>
-                <div className="cta-group">
+                <h1 className="animate-fade" style={{ animationDelay: '0.5s' }}>Record. Edit. Share.<br /><span className="gradient-text">In seconds.</span></h1>
+                <p className="subhead animate-fade" style={{ animationDelay: '0.7s' }}>Record fast. Make it clear with simple edits. Share instantly.</p>
+                <div className="cta-group animate-fade" style={{ animationDelay: '0.9s' }}>
                     <a href="#" className="btn btn-hero">
                         Get Started Free
                         <ArrowRight size={18} style={{ marginLeft: 8 }} />
                     </a>
                 </div>
-                <p className="sub-cta">Start for free · No credit card required</p>
+                <p className="sub-cta animate-fade" style={{ animationDelay: '1s' }}>Start for free · No credit card required</p>
 
-                <div className="feature-pills">
+                <div className="feature-pills animate-fade" style={{ animationDelay: '1.1s' }}>
                     <span className="pill">Browser extension</span>
                     <span className="pill">Cloud editor</span>
                     <span className="pill">Instant sharing</span>
                 </div>
 
-                <div className="browser-mockup">
+                <div className="browser-mockup animate-fade-up" style={{ animationDelay: '1.3s' }}>
                     <div className="mockup-header">
                         <div className="dots">
                             <span></span><span></span><span></span>
@@ -36,7 +37,6 @@ export default function Hero() {
                     </div>
                     <div className="mockup-content">
                         <div className="dashboard-placeholder">
-                            {/* Abstract UI representation */}
                             <div className="dash-sidebar"></div>
                             <div className="dash-main">
                                 <div className="dash-header"></div>
@@ -51,7 +51,43 @@ export default function Hero() {
                 </div>
             </div>
             <style>{`
+          /* Premium Animations */
+          @keyframes fadeIn {
+              from { opacity: 0; transform: translateY(20px); }
+              to { opacity: 1; transform: translateY(0); }
+          }
+          @keyframes fadeUp {
+              from { opacity: 0; transform: translateY(60px); }
+              to { opacity: 1; transform: translateY(0); }
+          }
+          @keyframes overlayFade {
+              from { opacity: 1; }
+              to { opacity: 0; }
+          }
+          
+          .animate-fade {
+              opacity: 0;
+              animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          }
+          .animate-fade-up {
+              opacity: 0;
+              animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          }
+          
+          .hero-overlay {
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: #0d0d0d;
+              animation: overlayFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+              pointer-events: none;
+              z-index: 1;
+          }
+          
           .hero {
+             position: relative;
              padding-top: 160px;
              padding-bottom: 120px; 
              text-align: center; 
@@ -59,6 +95,11 @@ export default function Hero() {
              background-size: cover;
              background-position: center -100px;
              background-repeat: no-repeat;
+          }
+          
+          .hero-content {
+              position: relative;
+              z-index: 2;
           }
           .badge {
              display: inline-flex;

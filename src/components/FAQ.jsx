@@ -14,8 +14,8 @@ export default function FAQ() {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: container.current,
-                start: "top 70%",
-                toggleActions: "play none none reverse"
+                start: "top 85%", // Trigger earlier
+                toggleActions: "play none none none" // Play once, never hide again
             }
         });
 
@@ -24,7 +24,8 @@ export default function FAQ() {
                 y: 20,
                 opacity: 0,
                 duration: 0.5,
-                stagger: 0.1
+                stagger: 0.1,
+                clearProps: "all" // Clear GSAP styles after animation to let CSS hover work
             }, "-=0.2");
 
     }, { scope: container });
@@ -97,7 +98,8 @@ export default function FAQ() {
                 .faq-item { 
                     padding: 0; 
                     cursor: pointer;
-                    transition: all 0.3s ease;
+                    /* IMPORTANT: Do not use transition: all here, it fights GSAP */
+                    transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
                     overflow: hidden;
                     /* Stronger Glass */
                     background: rgba(10, 10, 10, 0.7);

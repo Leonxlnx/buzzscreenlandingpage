@@ -86,7 +86,7 @@ export default function Hero() {
               right: 0;
               bottom: 0;
               background: #0d0d0d;
-              animation: overlayFade 2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+              animation: overlayFade 3.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
               pointer-events: none;
               z-index: 1;
           }

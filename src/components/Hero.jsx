@@ -57,7 +57,7 @@ export default function Hero() {
              text-align: center; 
              overflow: hidden;
              background-size: cover;
-             background-position: center 0%;
+             background-position: center -100px;
              background-repeat: no-repeat;
           }
           .badge {

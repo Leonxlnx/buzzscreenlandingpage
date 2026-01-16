@@ -2,16 +2,17 @@ import { Rocket, MessageSquare, BarChart, Globe } from 'lucide-react';
 
 export default function Communication() {
     const items = [
-        { icon: <Rocket size={24} />, title: "Faster reviews", desc: "Speed up your design reviews by 10x." },
-        { icon: <MessageSquare size={24} />, title: "Clear feedback", desc: "Leaving comments at exact timestamps." },
-        { icon: <BarChart size={24} />, title: "Analytics", desc: "Know who watched and when." },
-        { icon: <Globe size={24} />, title: "Guest access", desc: "Share with anyone, no account needed." },
+        { icon: <Rocket size={28} />, title: "Faster reviews", desc: "Speed up your design reviews by 10x. Point, click, done." },
+        { icon: <MessageSquare size={28} />, title: "Clear feedback", desc: "Leaving comments at exact timestamps to avoid confusion." },
+        { icon: <BarChart size={28} />, title: "Analytics", desc: "Know who watched, when they watched, and for how long." },
+        { icon: <Globe size={28} />, title: "Guest access", desc: "Share with clients or stakeholders. No account required." },
     ];
 
     return (
         <section className="communication">
             <div className="container">
                 <div className="section-header">
+                    <span className="section-label">Collaboration</span>
                     <h2>Built for clear communication</h2>
                     <p className="section-sub">Get your point across, faster than a meeting.</p>
                 </div>
@@ -28,26 +29,96 @@ export default function Communication() {
                 </div>
             </div>
             <style>{`
-            .communication { padding: 100px 0; background: #0b0b0b; }
-            .comm-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 60px; }
-            .comm-card { padding: 32px; display: flex; flex-direction: column; align-items: start; }
+            .communication { 
+                padding: 120px 0; 
+                background: linear-gradient(180deg, #0d0d0d 0%, #0b0b0b 100%); 
+            }
+            
+            .communication .section-label {
+                display: inline-block;
+                font-size: 0.85rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--accent-orange);
+                margin-bottom: 16px;
+            }
+            
+            .communication .section-header h2 {
+                font-size: 3rem;
+                font-weight: 700;
+                margin-bottom: 16px;
+            }
+            
+            .communication .section-sub {
+                font-size: 1.25rem;
+                color: var(--text-secondary);
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .comm-grid { 
+                display: grid; 
+                grid-template-columns: repeat(4, 1fr); 
+                gap: 24px; 
+                margin-top: 80px; 
+            }
+            
+            .comm-card { 
+                padding: 32px; 
+                display: flex; 
+                flex-direction: column; 
+                align-items: start;
+                transition: transform 0.3s ease;
+            }
+            
+            .comm-card:hover {
+                transform: translateY(-4px);
+            }
+            
             .comm-icon { 
-                width: 56px; height: 56px; 
-                border-radius: 14px; 
-                display: flex; align-items: center; justify-content: center; 
-                margin-bottom: 20px;
+                width: 64px; 
+                height: 64px; 
+                border-radius: 16px; 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                margin-bottom: 24px;
                 color: var(--text-primary);
                 background: linear-gradient(135deg, #181818, #101010);
                 box-shadow: 
-                    5px 5px 10px rgba(0,0,0,0.5),
-                    -2px -2px 5px rgba(255,255,255,0.05);
+                    6px 6px 12px rgba(0,0,0,0.5),
+                    -3px -3px 8px rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.05);
+                transition: all 0.3s ease;
             }
+            
             .comm-card:hover .comm-icon {
                 color: var(--accent-orange);
+                border-color: var(--accent-orange);
+                box-shadow: 0 0 15px rgba(255,87,34,0.3);
             }
-            .comm-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
-            .comm-card p { font-size: 0.9rem; color: var(--text-secondary); }
-            @media (max-width: 768px) { .comm-grid { grid-template-columns: 1fr; } }
+            
+            .comm-card h3 { 
+                font-size: 1.25rem; 
+                font-weight: 600;
+                margin-bottom: 10px; 
+            }
+            
+            .comm-card p { 
+                font-size: 1rem; 
+                color: var(--text-secondary); 
+                line-height: 1.6;
+            }
+            
+            @media (max-width: 1024px) { 
+                .comm-grid { grid-template-columns: repeat(2, 1fr); } 
+            }
+            
+            @media (max-width: 768px) { 
+                .comm-grid { grid-template-columns: 1fr; } 
+                .communication .section-header h2 { font-size: 2.2rem; }
+            }
         `}</style>
         </section>
     );

@@ -1,8 +1,30 @@
 import { ArrowRight } from 'lucide-react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef } from 'react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function CTA() {
+    const container = useRef(null);
+
+    useGSAP(() => {
+        gsap.from(".cta-content", {
+            scrollTrigger: {
+                trigger: container.current,
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out"
+        });
+    }, { scope: container });
+
     return (
-        <section className="cta-bottom">
+        <section className="cta-bottom" ref={container}>
             <div className="container">
                 <div className="cta-content soft-card">
                     <h2>Ready to create better videos?</h2>
@@ -20,15 +42,19 @@ export default function CTA() {
             .cta-bottom { 
                 padding: 120px 0; 
                 text-align: center;
-                background: #0d0d0d;
+                background: transparent; /* Seamless */
             }
             
             .cta-content { 
                 max-width: 800px;
                 margin: 0 auto;
                 padding: 80px 40px; 
-                background: linear-gradient(135deg, #161616 0%, #0f0f0f 100%);
-                border: 1px solid rgba(255,255,255,0.05);
+                /* Glass */
+                background: linear-gradient(135deg, rgba(22,22,22,0.8) 0%, rgba(15,15,15,0.8) 100%);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255,255,255,0.08);
+                border-radius: 30px;
+                box-shadow: 0 20px 50px rgba(0,0,0,0.3);
             }
             
             .cta-content h2 { 
@@ -36,6 +62,9 @@ export default function CTA() {
                 font-weight: 700;
                 margin-bottom: 20px;
                 line-height: 1.2;
+                background: linear-gradient(to right, #fff, #ddd);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
             }
             
             .cta-desc { 
@@ -63,6 +92,21 @@ export default function CTA() {
                 border-radius: 12px;
                 transition: all 0.3s ease;
                 box-shadow: 0 4px 20px rgba(255,87,34,0.3);
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .btn-cta::after {
+                content: '';
+                position: absolute;
+                top: 0; left: -100%;
+                width: 100%; height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+                transition: 0.5s;
+            }
+            
+            .btn-cta:hover::after {
+                left: 100%;
             }
             
             .btn-cta:hover {

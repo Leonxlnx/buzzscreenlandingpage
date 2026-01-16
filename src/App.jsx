@@ -7,10 +7,12 @@ import Communication from './components/Communication'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
 import FAQ from './components/FAQ'
+import Background from './components/Background'
 
 function App() {
     return (
         <div className="app">
+            <Background />
             <Navbar />
             <main>
                 <Hero />

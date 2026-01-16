@@ -1,6 +1,36 @@
 import { Video, Zap, Share2, CheckCircle2 } from 'lucide-react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef } from 'react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Features() {
+    const container = useRef(null);
+
+    useGSAP(() => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: container.current,
+                start: "top 70%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        tl.from(".section-label", { y: 20, opacity: 0, duration: 0.6 })
+            .from(".section-header h2", { y: 30, opacity: 0, duration: 0.6 }, "-=0.4")
+            .from(".section-sub", { y: 30, opacity: 0, duration: 0.6 }, "-=0.4")
+            .from(".feature-group-card", {
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.2,
+                ease: "power2.out"
+            }, "-=0.2");
+
+    }, { scope: container });
+
     const featureGroups = [
         {
             icon: <Video size={28} />,
@@ -36,7 +66,7 @@ export default function Features() {
     ];
 
     return (
-        <section className="features" id="features">
+        <section className="features" id="features" ref={container}>
             <div className="container">
                 <div className="section-header">
                     <span className="section-label">Features</span>
@@ -67,7 +97,7 @@ export default function Features() {
             <style>{`
             .features { 
                 padding: 120px 0; 
-                background: #0d0d0d; 
+                background: transparent; /* Removed solid black */
             }
             
             .section-label {
@@ -85,6 +115,9 @@ export default function Features() {
                 font-weight: 700;
                 margin-bottom: 16px;
                 line-height: 1.2;
+                background: linear-gradient(to right, #fff, #bbb);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
             }
             
             .features .section-sub {
@@ -108,10 +141,17 @@ export default function Features() {
                 align-items: start;
                 transition: transform 0.3s ease;
                 height: 100%;
+                /* Glass Effect */
+                background: rgba(20, 20, 20, 0.4);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                border-radius: 24px;
             }
             
             .feature-group-card:hover {
                 transform: translateY(-4px);
+                background: rgba(25, 25, 25, 0.5);
+                border-color: rgba(255, 87, 34, 0.2);
             }
             
             .feature-group-header {
@@ -125,18 +165,19 @@ export default function Features() {
                 width: 56px; 
                 height: 56px;
                 border-radius: 14px;
-                background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+                background: linear-gradient(135deg, rgba(26,26,26,0.8), rgba(15,15,15,0.8));
                 display: flex; 
                 align-items: center; 
                 justify-content: center;
                 color: var(--accent-orange);
-                box-shadow: var(--shadow-soft-out);
+                box-shadow: 0 8px 16px rgba(0,0,0,0.2);
                 border: 1px solid rgba(255,255,255,0.05);
             }
             
             .feature-group-card h3 { 
                 font-size: 1.5rem; 
                 font-weight: 600;
+                color: white;
             }
             
             .feature-list {

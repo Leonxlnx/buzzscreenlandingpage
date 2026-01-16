@@ -94,25 +94,20 @@ export default function Hero() {
           .hero {
              position: relative;
              padding-top: 160px;
-             padding-bottom: 120px; 
+             padding-bottom: 250px; /* Increased to allow overlap space */
              text-align: center; 
              overflow: hidden;
+             /* Background Image */
+             background-image: url(${heroBg});
              background-size: cover;
-             background-position: center -100px;
+             background-position: center;
              background-repeat: no-repeat;
+             /* Mask to fade out the bottom of the HERO IMAGE so global bg shows through */
+             mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+             -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
           }
           
-          .hero::after {
-              content: '';
-              position: absolute;
-              bottom: 0;
-              left: 0;
-              right: 0;
-              height: 350px;
-              background: linear-gradient(to bottom, transparent 0%, rgba(13,13,13,0.5) 50%, #0d0d0d 100%);
-              pointer-events: none;
-              z-index: 0;
-          }
+          /* Removed ::after pseudo-element that was creating the hard line/fade to black */
           
           .hero-content {
               position: relative;

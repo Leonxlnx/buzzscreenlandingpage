@@ -1,8 +1,38 @@
 import { Video, Share2, BarChart2 } from 'lucide-react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef } from 'react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Steps() {
+    const container = useRef(null);
+
+    useGSAP(() => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: container.current,
+                start: "top 70%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        tl.from(".section-label", { y: 20, opacity: 0, duration: 0.6 })
+            .from(".section-header h2", { y: 30, opacity: 0, duration: 0.6 }, "-=0.4")
+            .from(".section-sub", { y: 30, opacity: 0, duration: 0.6 }, "-=0.4")
+            .from(".step-card", {
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.2,
+                ease: "power2.out"
+            }, "-=0.2");
+
+    }, { scope: container });
+
     return (
-        <section className="steps">
+        <section className="steps" ref={container}>
             <div className="container">
                 <div className="section-header">
                     <span className="section-label">How it works</span>
@@ -38,11 +68,11 @@ export default function Steps() {
             </div>
             <style>{`
             .steps { 
-                padding: 250px 0 120px; 
-                margin-top: -250px;
+                padding: 120px 0 120px; 
+                margin-top: -80px; /* Slight overlap with masked hero */
                 position: relative;
                 z-index: 10;
-                background: linear-gradient(to bottom, transparent 0%, #0d0d0d 200px, #0d0d0d 100%);
+                background: transparent;
                 pointer-events: none;
             }
             .steps .container { pointer-events: auto; }
@@ -61,6 +91,9 @@ export default function Steps() {
                 font-size: 3rem;
                 font-weight: 700;
                 margin-bottom: 16px;
+                background: linear-gradient(to right, #fff, #aaa);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
             }
             
             .steps .section-sub {
@@ -85,10 +118,16 @@ export default function Steps() {
                 flex-direction: column; 
                 align-items: flex-start;
                 transition: transform 0.3s ease;
+                /* Glass Effect */
+                background: rgba(20, 20, 20, 0.4);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.05);
             }
             
             .step-card:hover {
                 transform: translateY(-4px);
+                background: rgba(25, 25, 25, 0.5);
+                border-color: rgba(255, 87, 34, 0.2);
             }
             
             .step-number { 
@@ -97,7 +136,7 @@ export default function Steps() {
                 right: 32px; 
                 font-size: 7rem; 
                 font-weight: 800; 
-                color: rgba(255,255,255,0.03); 
+                color: rgba(255,255,255,0.02); 
                 line-height: 1; 
                 pointer-events: none; 
             }
@@ -110,10 +149,8 @@ export default function Steps() {
                 align-items: center; 
                 justify-content: center; 
                 margin-bottom: 28px;
-                background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
-                box-shadow: 
-                    6px 6px 12px rgba(0,0,0,0.4),
-                    -3px -3px 8px rgba(255,255,255,0.03);
+                background: linear-gradient(135deg, rgba(26,26,26,0.8) 0%, rgba(15,15,15,0.8) 100%);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
                 border: 1px solid rgba(255,255,255,0.05);
                 transition: all 0.3s ease;
             }
@@ -121,12 +158,14 @@ export default function Steps() {
             .step-card:hover .step-icon {
                 border-color: var(--accent-orange);
                 box-shadow: 0 0 25px rgba(255,87,34,0.3);
+                transform: scale(1.05);
             }
             
             .step-card h3 { 
                 font-size: 1.5rem;
                 font-weight: 600;
                 margin-bottom: 16px; 
+                color: white;
             }
             
             .step-card p { 

@@ -43,7 +43,8 @@
 }
 
 body {
-    background-color: var(--bg-color);
+    background-color: transparent;
+    /* Changed from var(--bg-color) to let global fixed bg show */
     color: var(--text-primary);
     font-family: var(--font-family);
     line-height: 1.6;

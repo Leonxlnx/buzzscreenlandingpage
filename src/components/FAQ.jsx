@@ -1,8 +1,34 @@
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function FAQ() {
     const [openIndex, setOpenIndex] = useState(null);
+    const container = useRef(null);
+
+    useGSAP(() => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: container.current,
+                start: "top 70%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        tl.from(".section-header", { y: 20, opacity: 0, duration: 0.6 })
+            .from(".faq-item", {
+                y: 20,
+                opacity: 0,
+                duration: 0.5,
+                stagger: 0.1
+            }, "-=0.2");
+
+    }, { scope: container });
+
     const faqs = [
         { q: "Do I need to download any software?", a: "No. Everything works from your browser." },
         { q: "Do early users get any benefits?", a: "Yes. Early access users will receive a lifetime discount on buzzscreen plans as a thank-you for helping shape the product." },
@@ -13,7 +39,7 @@ export default function FAQ() {
     ];
 
     return (
-        <section className="faq">
+        <section className="faq" ref={container}>
             <div className="container faq-container">
                 <div className="section-header">
                     <h2>FAQ</h2>
@@ -42,7 +68,7 @@ export default function FAQ() {
             <style>{`
                 .faq { 
                     padding: 120px 0;
-                    background: #0d0d0d;
+                    background: transparent;
                 }
                 
                 .faq-container {
@@ -53,6 +79,7 @@ export default function FAQ() {
                     font-size: 2.8rem;
                     font-weight: 700;
                     margin-bottom: 10px;
+                    color: white;
                 }
                 
                 .faq .section-sub {
@@ -72,15 +99,22 @@ export default function FAQ() {
                     cursor: pointer;
                     transition: all 0.3s ease;
                     overflow: hidden;
+                    /* Stronger Glass */
+                    background: rgba(10, 10, 10, 0.7);
+                    backdrop-filter: blur(20px);
+                    border: 1px solid rgba(255, 255, 255, 0.08);
+                    border-radius: 16px;
                 }
                 
                 .faq-item:hover {
                     border-color: rgba(255,255,255,0.1);
+                    background: rgba(30,30,30,0.5);
                 }
                 
                 .faq-item.active {
                     border-color: var(--accent-orange);
-                    background: linear-gradient(135deg, rgba(255,87,34,0.05) 0%, transparent 100%);
+                    background: linear-gradient(135deg, rgba(255,87,34,0.1) 0%, rgba(20,20,20,0.6) 100%);
+                    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
                 }
                 
                 .faq-question { 
@@ -90,6 +124,7 @@ export default function FAQ() {
                     align-items: center; 
                     font-weight: 600; 
                     font-size: 1.1rem;
+                    color: white;
                 }
                 
                 .faq-icon {
@@ -112,7 +147,7 @@ export default function FAQ() {
                 .faq-answer { 
                     max-height: 0;
                     overflow: hidden;
-                    transition: max-height 0.3s ease, padding 0.3s ease;
+                    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 }
                 
                 .faq-answer.open {

@@ -1,7 +1,35 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function EditSection() {
     const [activeTab, setActiveTab] = useState(0);
+    const container = useRef(null);
+
+    useGSAP(() => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: container.current,
+                start: "top 70%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        tl.from(".section-label, .section-header h2, .section-sub", {
+            y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out"
+        })
+            .from(".edit-feat-item", {
+                x: -30, opacity: 0, duration: 0.6, stagger: 0.1
+            }, "-=0.4")
+            .from(".edit-visual", {
+                x: 30, opacity: 0, duration: 0.8, ease: "back.out(1.2)"
+            }, "-=0.6");
+
+    }, { scope: container });
+
     const tabs = [
         {
             id: 0,
@@ -30,7 +58,7 @@ export default function EditSection() {
     ];
 
     return (
-        <section className="edit-section">
+        <section className="edit-section" ref={container}>
             <div className="container">
                 <div className="section-header">
                     <span className="section-label">Editing Suite</span>
@@ -76,7 +104,7 @@ export default function EditSection() {
             <style>{`
             .edit-section { 
                 padding: 120px 0; 
-                background: #0d0d0d;
+                background: transparent; /* Seamless */
             }
             
             .edit-section .section-label {
@@ -93,6 +121,9 @@ export default function EditSection() {
                 font-size: 3rem;
                 font-weight: 700;
                 margin-bottom: 16px;
+                background: linear-gradient(to right, #fff, #bbb);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
             }
             
             .edit-section .section-sub {
@@ -117,21 +148,22 @@ export default function EditSection() {
                 cursor: pointer;
                 border: 1px solid transparent;
                 margin-bottom: 4px;
+                background: rgba(255, 255, 255, 0.02);
             }
-            .edit-feat-item:hover { background: rgba(255,255,255,0.02); }
+            .edit-feat-item:hover { background: rgba(255,255,255,0.05); }
             
             .edit-feat-item.active { 
-                background: #141414;
-                box-shadow: var(--shadow-soft-out);
-                border-color: rgba(255,255,255,0.03);
+                background: rgba(255, 87, 34, 0.08);
+                box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+                border-color: rgba(255,87,34,0.2);
             }
             
             .edit-feat-item .num { 
                 width: 32px; height: 32px; 
                 min-width: 32px;
                 border-radius: 10px; 
-                background: #0d0d0d;
-                box-shadow: var(--shadow-inset);
+                background: rgba(0,0,0,0.4);
+                box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5);
                 display: flex; align-items: center; justify-content: center; 
                 font-size: 0.9rem; font-weight: 700; color: #555;
                 transition: all 0.3s ease;
@@ -142,16 +174,23 @@ export default function EditSection() {
                 box-shadow: 0 4px 10px rgba(255,87,34,0.3);
             }
             
-            .edit-feat-item h4 { margin-bottom: 6px; font-size: 1.1rem; font-weight: 600; }
+            .edit-feat-item h4 { margin-bottom: 6px; font-size: 1.1rem; font-weight: 600; color: white; }
             .edit-feat-item p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.5; }
             
-            .edit-visual { padding: 40px; }
+            .edit-visual { 
+                padding: 40px; 
+                background: rgba(20, 20, 20, 0.6);
+                backdrop-filter: blur(16px);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                border-radius: 24px;
+            }
+
             .visual-content { 
                 height: 350px; 
-                background: #0a0a0a; 
+                background: rgba(10, 10, 10, 0.8); 
                 border-radius: 16px; 
                 border: 1px solid rgba(255,255,255,0.03); 
-                box-shadow: var(--shadow-inset); 
+                box-shadow: inset 0 0 20px rgba(0,0,0,0.5); 
                 position: relative; 
                 overflow: hidden; 
                 margin-bottom: 24px;
@@ -172,13 +211,14 @@ export default function EditSection() {
             }
             
             .ui-badge {
-                background: rgba(255,87,34,0.1);
+                background: rgba(255,87,34,0.15);
                 color: var(--accent-orange);
-                padding: 8px 16px;
-                border-radius: 8px;
-                font-size: 0.9rem;
+                padding: 10px 20px;
+                border-radius: 50px;
+                font-size: 1rem;
                 font-weight: 600;
-                border: 1px solid rgba(255,87,34,0.2);
+                border: 1px solid rgba(255,87,34,0.3);
+                box-shadow: 0 0 15px rgba(255,87,34,0.2);
             }
             
             .caption h4 { margin-bottom: 8px; font-size: 1.2rem; color: var(--accent-orange); }

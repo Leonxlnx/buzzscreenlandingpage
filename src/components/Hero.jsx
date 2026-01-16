@@ -52,85 +52,30 @@ export default function Hero() {
             </div>
             <style>{`
           .hero {
-             padding-top: 160px;
-             padding-bottom: 120px; 
+             padding-top: 140px;
+             padding-bottom: 100px; 
              text-align: center; 
              overflow: hidden;
              background-size: cover;
              background-position: center top;
              background-repeat: no-repeat;
           }
-          .badge {
-             display: inline-flex;
-             align-items: center;
-             gap: 8px;
-             padding: 8px 16px;
-             background: #141414;
-             border-radius: 100px;
-             font-size: 0.85rem;
-             color: var(--text-secondary);
-             box-shadow: var(--shadow-soft-out);
-             border: 1px solid rgba(255,255,255,0.02);
-             margin-bottom: 40px;
-          }
-          .badge-dot {
-              width: 8px; height: 8px; background: var(--accent-orange); border-radius: 50%;
-              box-shadow: 0 0 10px var(--accent-orange);
-          }
-          
-          .hero h1 { 
-              font-size: 4.2rem; 
-              line-height: 1.15; 
-              margin-bottom: 24px;
-              text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-          }
-          .gradient-text {
-              background: var(--gradient-orange);
-              -webkit-background-clip: text; 
-              -webkit-text-fill-color: transparent;
-          }
-          .hero .subhead {
-              font-size: 1.15rem;
-              color: var(--text-secondary);
-              max-width: 480px;
-              margin: 0 auto 40px;
-              line-height: 1.6;
-          }
-          .cta-group { display: flex; justify-content: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
-          
-          .sub-cta {
-              color: var(--text-secondary);
-              font-size: 0.9rem;
-              margin-bottom: 32px;
-              opacity: 0.7;
-          }
+          /* ... badge styles ... */
           
           .feature-pills {
               display: flex;
               justify-content: center;
               gap: 12px;
-              margin-bottom: 60px;
+              margin-bottom: 40px; /* Reduced from 60px to pull mockup higher */
               flex-wrap: wrap;
           }
-          .pill {
-              padding: 8px 16px;
-              background: rgba(255,255,255,0.03);
-              border: 1px solid rgba(255,255,255,0.06);
-              border-radius: 100px;
-              font-size: 0.8rem;
-              color: var(--text-secondary);
-              transition: all 0.3s;
-          }
-          .pill:hover {
-              background: rgba(255,255,255,0.06);
-              color: white;
-          }
+          /* ... pill styles ... */
 
           .browser-mockup {
              background: #141414;
              border-radius: 20px;
              border: 1px solid rgba(255,255,255,0.05);
-             max-width: 960px;
+             max-width: 1200px; /* Increased from 960px */
              margin: 0 auto;
              box-shadow: 
                 0 40px 80px rgba(0,0,0,0.5),

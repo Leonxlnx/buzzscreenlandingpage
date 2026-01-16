@@ -38,9 +38,10 @@ export default function Steps() {
             </div>
             <style>{`
             .steps { 
-                padding: 120px 0; 
+                padding: 200px 0 120px; 
+                margin-top: -200px;
                 position: relative;
-                z-index: 1;
+                z-index: 10;
                 background: #0d0d0d;
             }
             

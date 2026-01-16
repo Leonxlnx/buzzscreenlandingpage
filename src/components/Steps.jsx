@@ -38,12 +38,14 @@ export default function Steps() {
             </div>
             <style>{`
             .steps { 
-                padding: 200px 0 120px; 
-                margin-top: -200px;
+                padding: 250px 0 120px; 
+                margin-top: -250px;
                 position: relative;
                 z-index: 10;
-                background: #0d0d0d;
+                background: linear-gradient(to bottom, transparent 0%, #0d0d0d 200px, #0d0d0d 100%);
+                pointer-events: none; /* Let clicks pass through the top transparent part if needed, but container clips content? No, just careful with pointer-events */
             }
+            .steps .container { pointer-events: auto; }
             
             .steps .section-label {
                 display: inline-block;

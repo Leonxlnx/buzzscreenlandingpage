@@ -36,7 +36,42 @@ export default function Steps() {
                 </div>
             </div>
             <style>{`
-            .steps { padding: 100px 0; }
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(30px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .steps { 
+                padding: 100px 0; 
+                position: relative;
+                background: radial-gradient(ellipse at top, #381101 0%, #0d0d0d 60%),
+                            linear-gradient(90deg, #220803 0%, #381101 50%, #220803 100%);
+                background-blend-mode: overlay;
+            }
+            
+            .steps::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 200px;
+                background: linear-gradient(180deg, #220803 0%, transparent 100%);
+                pointer-events: none;
+            }
+            
+            .steps .section-header {
+                opacity: 0;
+                animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+            }
+            
+            .step-card {
+                opacity: 0;
+                animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            }
+            .step-card:nth-child(1) { animation-delay: 0.3s; }
+            .step-card:nth-child(2) { animation-delay: 0.5s; }
+            .step-card:nth-child(3) { animation-delay: 0.7s; }
             .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
             .step-card { 
                 padding: 40px 32px; 

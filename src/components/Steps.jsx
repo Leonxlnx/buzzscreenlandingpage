@@ -42,8 +42,10 @@ export default function Steps() {
             }
             
             .steps { 
-                padding: 100px 0; 
+                padding: 220px 0 100px; 
+                margin-top: -120px;
                 position: relative;
+                z-index: 1;
                 background: radial-gradient(ellipse at top, #381101 0%, #0d0d0d 60%),
                             linear-gradient(90deg, #220803 0%, #381101 50%, #220803 100%);
                 background-blend-mode: overlay;
@@ -55,9 +57,10 @@ export default function Steps() {
                 top: 0;
                 left: 0;
                 right: 0;
-                height: 200px;
-                background: linear-gradient(180deg, #220803 0%, transparent 100%);
+                height: 300px;
+                background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(34,8,3,0.5) 100%);
                 pointer-events: none;
+                mix-blend-mode: multiply;
             }
             
             .steps .section-header {

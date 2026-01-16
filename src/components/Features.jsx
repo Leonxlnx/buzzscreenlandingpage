@@ -1,13 +1,38 @@
-import { Zap, Video, Save, Edit3, Lock, RefreshCcw } from 'lucide-react';
+import { Video, Zap, Share2, CheckCircle2 } from 'lucide-react';
 
 export default function Features() {
-    const features = [
-        { icon: <Zap size={28} />, title: "Record in browser or app", desc: "Works everywhere you work. No downloads, no setup." },
-        { icon: <Video size={28} />, title: "Record screen, cam, or both", desc: "Total control over your layout and capture settings." },
-        { icon: <Save size={28} />, title: "Save locally or to the cloud", desc: "Your data, your choice. Always in your control." },
-        { icon: <Edit3 size={28} />, title: "Edit instantly after stopping", desc: "Trim, crop, and polish without leaving the app." },
-        { icon: <Lock size={28} />, title: "Secure by default", desc: "Enterprise-grade security built into every feature." },
-        { icon: <RefreshCcw size={28} />, title: "Share with a link", desc: "No large file attachments. Just send a link." },
+    const featureGroups = [
+        {
+            icon: <Video size={28} />,
+            title: "Record",
+            items: [
+                "Capture full screen, a tab, or a window",
+                "Record your camera with a simple overlay",
+                "Separate webcam track when you need flexibility",
+                "Capture system audio and microphone"
+            ]
+        },
+        {
+            icon: <Zap size={28} />,
+            title: "Make it clear",
+            items: [
+                "Quick trims to remove dead time",
+                "Smooth manual zooms to guide attention",
+                "Simple transitions between screen changes",
+                "Add text and annotations for context",
+                "Save your editing progress in the cloud"
+            ]
+        },
+        {
+            icon: <Share2 size={28} />,
+            title: "Share & reuse",
+            items: [
+                "Get a shareable link in seconds",
+                "Embed videos where you need them",
+                "Download in HD when required",
+                "Export MP4 for landing pages or socials"
+            ]
+        }
     ];
 
     return (
@@ -15,17 +40,26 @@ export default function Features() {
             <div className="container">
                 <div className="section-header">
                     <span className="section-label">Features</span>
-                    <h2>Everything that matters</h2>
-                    <p className="section-sub">Tools designed to help you share your ideas fast.</p>
+                    <h2>Everything that matters, nothing that slows you down</h2>
+                    <p className="section-sub">Tools designed to help you explain things clearly, without unnecessary complexity.</p>
                 </div>
-                <div className="features-grid">
-                    {features.map((feat, index) => (
-                        <div className="feature-item soft-card" key={index}>
-                            <div className="feature-icon-wrap">
-                                {feat.icon}
+                <div className="features-grid-3">
+                    {featureGroups.map((group, index) => (
+                        <div className="feature-group-card soft-card" key={index}>
+                            <div className="feature-group-header">
+                                <div className="feature-icon-wrap">
+                                    {group.icon}
+                                </div>
+                                <h3>{group.title}</h3>
                             </div>
-                            <h3>{feat.title}</h3>
-                            <p>{feat.desc}</p>
+                            <ul className="feature-list">
+                                {group.items.map((item, i) => (
+                                    <li key={i}>
+                                        <CheckCircle2 size={18} className="check-icon" />
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     ))}
                 </div>
@@ -50,74 +84,89 @@ export default function Features() {
                 font-size: 3rem;
                 font-weight: 700;
                 margin-bottom: 16px;
+                line-height: 1.2;
             }
             
             .features .section-sub {
                 font-size: 1.25rem;
                 color: var(--text-secondary);
-                max-width: 500px;
+                max-width: 600px;
                 margin: 0 auto;
             }
             
-            .features-grid { 
+            .features-grid-3 { 
                 display: grid; 
                 grid-template-columns: repeat(3, 1fr); 
                 gap: 32px; 
                 margin-top: 80px; 
             }
             
-            .feature-item { 
-                padding: 40px 32px; 
+            .feature-group-card { 
+                padding: 40px; 
                 display: flex; 
                 flex-direction: column; 
                 align-items: start;
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                transition: transform 0.3s ease;
+                height: 100%;
             }
             
-            .feature-item:hover {
+            .feature-group-card:hover {
                 transform: translateY(-4px);
             }
             
+            .feature-group-header {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                margin-bottom: 30px;
+            }
+            
             .feature-icon-wrap {
-                width: 60px; 
-                height: 60px;
-                border-radius: 16px;
+                width: 56px; 
+                height: 56px;
+                border-radius: 14px;
                 background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
                 display: flex; 
                 align-items: center; 
                 justify-content: center;
-                margin-bottom: 24px;
                 color: var(--accent-orange);
-                box-shadow: 
-                    6px 6px 12px rgba(0,0,0,0.4),
-                    -3px -3px 8px rgba(255,255,255,0.03);
+                box-shadow: var(--shadow-soft-out);
                 border: 1px solid rgba(255,255,255,0.05);
-                transition: all 0.3s ease;
             }
             
-            .feature-item:hover .feature-icon-wrap {
-                box-shadow: 0 0 20px rgba(255,87,34,0.3);
-                border-color: var(--accent-orange);
-            }
-            
-            .feature-item h3 { 
-                font-size: 1.25rem; 
+            .feature-group-card h3 { 
+                font-size: 1.5rem; 
                 font-weight: 600;
-                margin-bottom: 12px; 
             }
             
-            .feature-item p { 
-                color: var(--text-secondary); 
-                font-size: 1rem; 
-                line-height: 1.6;
+            .feature-list {
+                list-style: none;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            .feature-list li {
+                display: flex;
+                align-items: flex-start;
+                gap: 12px;
+                font-size: 1rem;
+                color: var(--text-secondary);
+                line-height: 1.5;
+            }
+            
+            .check-icon {
+                color: var(--accent-orange);
+                min-width: 18px;
+                margin-top: 3px;
             }
             
             @media (max-width: 1024px) { 
-                .features-grid { grid-template-columns: repeat(2, 1fr); } 
+                .features-grid-3 { grid-template-columns: 1fr; max-width: 600px; margin: 80px auto 0; } 
             }
             
             @media (max-width: 768px) { 
-                .features-grid { grid-template-columns: 1fr; }
                 .features .section-header h2 { font-size: 2.2rem; }
             }
          `}</style>

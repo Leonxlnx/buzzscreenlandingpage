@@ -1,20 +1,20 @@
-import { Rocket, MessageSquare, BarChart, Globe } from 'lucide-react';
+import { Monitor, MessageCircle, BookOpen, Users } from 'lucide-react';
 
 export default function Communication() {
     const items = [
-        { icon: <Rocket size={28} />, title: "Faster reviews", desc: "Speed up your design reviews by 10x. Point, click, done." },
-        { icon: <MessageSquare size={28} />, title: "Clear feedback", desc: "Leaving comments at exact timestamps to avoid confusion." },
-        { icon: <BarChart size={28} />, title: "Analytics", desc: "Know who watched, when they watched, and for how long." },
-        { icon: <Globe size={28} />, title: "Guest access", desc: "Share with clients or stakeholders. No account required." },
+        { icon: <Monitor size={28} />, title: "Product Demos", desc: "Show how your product works, clearly and quickly." },
+        { icon: <MessageCircle size={28} />, title: "Visual Feedback", desc: "Show what you mean instead of explaining it in text." },
+        { icon: <BookOpen size={28} />, title: "Tutorials", desc: "Create short, clear tutorials for your team or clients." },
+        { icon: <Users size={28} />, title: "Team Updates", desc: "Share progress, updates, or context with a simple link." },
     ];
 
     return (
         <section className="communication">
             <div className="container">
                 <div className="section-header">
-                    <span className="section-label">Collaboration</span>
+                    <span className="section-label">Use Cases</span>
                     <h2>Built for clear communication</h2>
-                    <p className="section-sub">Get your point across, faster than a meeting.</p>
+                    <p className="section-sub">Real use cases for fast, clear screen recordings.</p>
                 </div>
                 <div className="comm-grid">
                     {items.map((item, index) => (

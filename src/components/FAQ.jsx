@@ -4,20 +4,20 @@ import { useState } from 'react';
 export default function FAQ() {
     const [openIndex, setOpenIndex] = useState(null);
     const faqs = [
-        { q: "Do I need to install software?", a: "No, BuzzScreen works directly in your browser. We also offer desktop apps for Mac and Windows if you prefer a native experience." },
-        { q: "Is there a free plan?", a: "Yes, our personal plan is free forever with up to 10 videos per month. No credit card required." },
-        { q: "Can I record my webcam?", a: "Absolutely. You can record your screen, your webcam, or both simultaneously with picture-in-picture." },
-        { q: "What about video quality?", a: "We support recording up to 4K resolution at 60fps. Your videos will look crisp and professional." },
-        { q: "How do I share my recordings?", a: "After recording, you get an instant link you can share with anyone. No file uploads or downloads needed." }
+        { q: "Do I need to download any software?", a: "No. Everything works from your browser." },
+        { q: "Do early users get any benefits?", a: "Yes. Early access users will receive a lifetime discount on buzzscreen plans as a thank-you for helping shape the product." },
+        { q: "Can I share videos without downloading anything?", a: "Yes, you get an instant link when you finish recording." },
+        { q: "What video quality is supported?", a: "High quality recording, MP4 export." },
+        { q: "Can I edit my videos?", a: "Yes, with our web editor: trimming, text, zooms, transitions and more." },
+        { q: "Can I continue editing another day?", a: "Yes, projects are saved in the cloud." }
     ];
 
     return (
         <section className="faq">
             <div className="container faq-container">
                 <div className="section-header">
-                    <span className="section-label">FAQ</span>
-                    <h2>Common questions</h2>
-                    <p className="section-sub">Everything you need to know about BuzzScreen.</p>
+                    <h2>FAQ</h2>
+                    <p className="section-sub">Frequently Asked Questions</p>
                 </div>
                 <div className="faq-list">
                     {faqs.map((faq, index) => (
@@ -49,20 +49,10 @@ export default function FAQ() {
                     max-width: 800px;
                 }
                 
-                .faq .section-label {
-                    display: inline-block;
-                    font-size: 0.85rem;
-                    font-weight: 600;
-                    text-transform: uppercase;
-                    letter-spacing: 0.1em;
-                    color: var(--accent-orange);
-                    margin-bottom: 16px;
-                }
-                
                 .faq .section-header h2 {
                     font-size: 2.8rem;
                     font-weight: 700;
-                    margin-bottom: 16px;
+                    margin-bottom: 10px;
                 }
                 
                 .faq .section-sub {

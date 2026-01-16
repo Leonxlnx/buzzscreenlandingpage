@@ -7,7 +7,7 @@ export default function Steps() {
                 <div className="section-header">
                     <span className="section-label">How it works</span>
                     <h2>Three simple steps</h2>
-                    <p className="section-sub">Start recording in seconds. Edit what matters. Share instantly.</p>
+                    <p className="section-sub">Start recording in seconds, edit with powerful tools, and share instantly.</p>
                 </div>
                 <div className="steps-grid">
                     <div className="step-card soft-card">
@@ -16,7 +16,7 @@ export default function Steps() {
                             <Video size={28} color="white" />
                         </div>
                         <h3>Record</h3>
-                        <p>Click the button and start recording your screen, camera, or both. No setup required.</p>
+                        <p>Click the extension and start recording your screen, tab, or window. Optional webcam overlay and separate webcam track available.</p>
                     </div>
                     <div className="step-card soft-card">
                         <div className="step-number">2</div>
@@ -24,7 +24,7 @@ export default function Steps() {
                             <Share2 size={28} color="white" />
                         </div>
                         <h3>Share</h3>
-                        <p>Share your videos instantly with a link. No uploads, no waiting, no file size limits.</p>
+                        <p>Get an instant shareable link when you finish. Share without downloading or exporting anything.</p>
                     </div>
                     <div className="step-card soft-card">
                         <div className="step-number">3</div>
@@ -32,7 +32,7 @@ export default function Steps() {
                             <BarChart2 size={28} color="white" />
                         </div>
                         <h3>Improve</h3>
-                        <p>See who watched your videos and learn what resonates with your audience.</p>
+                        <p>Open your video in the web editor to trim, add manual zooms, transitions, and text. Export or share when ready.</p>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@ export default function Steps() {
                 position: relative;
                 z-index: 10;
                 background: linear-gradient(to bottom, transparent 0%, #0d0d0d 200px, #0d0d0d 100%);
-                pointer-events: none; /* Let clicks pass through the top transparent part if needed, but container clips content? No, just careful with pointer-events */
+                pointer-events: none;
             }
             .steps .container { pointer-events: auto; }
             
@@ -66,7 +66,7 @@ export default function Steps() {
             .steps .section-sub {
                 font-size: 1.25rem;
                 color: var(--text-secondary);
-                max-width: 500px;
+                max-width: 600px;
                 margin: 0 auto;
             }
             

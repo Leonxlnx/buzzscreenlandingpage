@@ -3,10 +3,30 @@ import { useState } from 'react';
 export default function EditSection() {
     const [activeTab, setActiveTab] = useState(0);
     const tabs = [
-        { id: 0, title: "Trim the ends", desc: "Cut the fluff from start and finish." },
-        { id: 1, title: "Crop the frame", desc: "Focus on the important part of the screen." },
-        { id: 2, title: "Add a thumbnail", desc: "Set the perfect preview image." },
-        { id: 3, title: "Add text", desc: "Highlight key points with overlay text." },
+        {
+            id: 0,
+            title: "Smooth zooms",
+            shortDesc: "Zoom exactly where it matters",
+            longDesc: "Zoom exactly where it matters, without keyframes or complex controls. Just click where you want to focus, and let BuzzCreen handle the smooth camera movement."
+        },
+        {
+            id: 1,
+            title: "Text & layouts",
+            shortDesc: "Add context without over-editing",
+            longDesc: "Add context without over-editing. Choose from professional layouts and add text overlays to guide your viewers through your content."
+        },
+        {
+            id: 2,
+            title: "Smooth transitions",
+            shortDesc: "Make screen changes easier to follow",
+            longDesc: "Make screen changes easier to follow. Automatic smooth transitions between scenes help your viewers stay focused on what matters."
+        },
+        {
+            id: 3,
+            title: "Save & resume",
+            shortDesc: "Pick it up later, from anywhere",
+            longDesc: "Pick it up later, from anywhere. Your projects are automatically saved and synced, so you can continue editing from any device."
+        },
     ];
 
     return (
@@ -15,7 +35,7 @@ export default function EditSection() {
                 <div className="section-header">
                     <span className="section-label">Editing Suite</span>
                     <h2>Edit only what matters</h2>
-                    <p className="section-sub">Make your recording shine with simple, streamlined edits.</p>
+                    <p className="section-sub">Make your recordings clearer with simple, intentional edits.</p>
                 </div>
                 <div className="edit-mockup-wrapper">
                     <div className="edit-features">
@@ -28,7 +48,7 @@ export default function EditSection() {
                                 <span className="num">{index + 1}</span>
                                 <div>
                                     <h4>{tab.title}</h4>
-                                    <p>{tab.desc}</p>
+                                    <p>{tab.shortDesc}</p>
                                 </div>
                             </div>
                         ))}
@@ -40,15 +60,15 @@ export default function EditSection() {
                                 <div className="visual-playhead" style={{ left: `${(activeTab + 1) * 20}%` }}></div>
                             </div>
                             <div className="visual-ui-overlay">
-                                {activeTab === 0 && <span className="ui-badge">Trim Mode</span>}
-                                {activeTab === 1 && <span className="ui-badge">Crop Tool</span>}
-                                {activeTab === 2 && <span className="ui-badge">Thumbnail Editor</span>}
-                                {activeTab === 3 && <span className="ui-badge">Text Overlay</span>}
+                                {activeTab === 0 && <span className="ui-badge">Smooth Zoom</span>}
+                                {activeTab === 1 && <span className="ui-badge">Text Overlay</span>}
+                                {activeTab === 2 && <span className="ui-badge">Transition</span>}
+                                {activeTab === 3 && <span className="ui-badge">Auto Save</span>}
                             </div>
                         </div>
                         <div className="caption">
                             <h4>{tabs[activeTab].title}</h4>
-                            <p>Modifying your video in real-time without rendering.</p>
+                            <p>{tabs[activeTab].longDesc}</p>
                         </div>
                     </div>
                 </div>
@@ -162,7 +182,7 @@ export default function EditSection() {
             }
             
             .caption h4 { margin-bottom: 8px; font-size: 1.2rem; color: var(--accent-orange); }
-            .caption p { color: var(--text-secondary); font-size: 1.05rem; }
+            .caption p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; }
             
             @media (max-width: 900px) { .edit-mockup-wrapper { grid-template-columns: 1fr; } }
             @media (max-width: 768px) { .edit-section .section-header h2 { font-size: 2.2rem; } }

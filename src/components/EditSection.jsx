@@ -14,18 +14,21 @@ export default function EditSection() {
             scrollTrigger: {
                 trigger: container.current,
                 start: "top 70%",
-                toggleActions: "play none none reverse"
+                toggleActions: "play none none none" // Play once to fix visibility
             }
         });
 
         tl.from(".section-label, .section-header h2, .section-sub", {
-            y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out"
+            y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out",
+            clearProps: "all"
         })
             .from(".edit-feat-item", {
-                x: -30, opacity: 0, duration: 0.6, stagger: 0.1
+                x: -30, opacity: 0, duration: 0.6, stagger: 0.1,
+                clearProps: "all"
             }, "-=0.4")
             .from(".edit-visual", {
-                x: 30, opacity: 0, duration: 0.8, ease: "back.out(1.2)"
+                x: 30, opacity: 0, duration: 0.8, ease: "back.out(1.2)",
+                clearProps: "all"
             }, "-=0.6");
 
     }, { scope: container });
@@ -121,6 +124,8 @@ export default function EditSection() {
                 font-size: 3rem;
                 font-weight: 700;
                 margin-bottom: 16px;
+                /* Explicit white color for visibility */
+                color: white;
                 background: linear-gradient(to right, #fff, #bbb);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
@@ -144,7 +149,8 @@ export default function EditSection() {
             .edit-feat-item { 
                 display: flex; gap: 20px; padding: 24px; 
                 border-radius: 16px;
-                transition: all 0.3s ease; 
+                /* Removed transition: all */
+                transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; 
                 cursor: pointer;
                 border: 1px solid transparent;
                 margin-bottom: 4px;

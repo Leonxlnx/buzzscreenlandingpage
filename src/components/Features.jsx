@@ -14,19 +14,21 @@ export default function Features() {
             scrollTrigger: {
                 trigger: container.current,
                 start: "top 70%",
-                toggleActions: "play none none reverse"
+                toggleActions: "play none none none"
             }
         });
 
-        tl.from(".section-label", { y: 20, opacity: 0, duration: 0.6 })
-            .from(".section-header h2", { y: 30, opacity: 0, duration: 0.6 }, "-=0.4")
-            .from(".section-sub", { y: 30, opacity: 0, duration: 0.6 }, "-=0.4")
+        tl.from(".section-label, .section-header h2, .section-sub", {
+            y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out",
+            clearProps: "all"
+        })
             .from(".feature-group-card", {
                 y: 50,
                 opacity: 0,
                 duration: 0.8,
                 stagger: 0.2,
-                ease: "power2.out"
+                ease: "power2.out",
+                clearProps: "all"
             }, "-=0.2");
 
     }, { scope: container });
@@ -139,7 +141,8 @@ export default function Features() {
                 display: flex; 
                 flex-direction: column; 
                 align-items: start;
-                transition: transform 0.3s ease;
+                /* Specific transitions, NO ALL */
+                transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
                 height: 100%;
                 /* Glass Effect */
                 background: rgba(20, 20, 20, 0.4);

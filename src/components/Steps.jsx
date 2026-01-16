@@ -14,7 +14,7 @@ export default function Steps() {
             scrollTrigger: {
                 trigger: container.current,
                 start: "top 70%",
-                toggleActions: "play none none reverse"
+                toggleActions: "play none none none"
             }
         });
 
@@ -26,7 +26,8 @@ export default function Steps() {
                 opacity: 0,
                 duration: 0.8,
                 stagger: 0.2,
-                ease: "power2.out"
+                ease: "power2.out",
+                clearProps: "all"
             }, "-=0.2");
 
     }, { scope: container });
@@ -117,7 +118,8 @@ export default function Steps() {
                 display: flex; 
                 flex-direction: column; 
                 align-items: flex-start;
-                transition: transform 0.3s ease;
+                /* Specific transition, NO ALL */
+                transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
                 /* Glass Effect */
                 background: rgba(20, 20, 20, 0.4);
                 backdrop-filter: blur(12px);

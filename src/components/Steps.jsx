@@ -46,9 +46,8 @@ export default function Steps() {
                 margin-top: -120px;
                 position: relative;
                 z-index: 1;
-                background: radial-gradient(ellipse at top, #381101 0%, #0d0d0d 60%),
-                            linear-gradient(90deg, #220803 0%, #381101 50%, #220803 100%);
-                background-blend-mode: overlay;
+                background: linear-gradient(180deg, #220803 0%, #381101 40%, #0d0d0d 100%);
+                box-shadow: 0 -50px 100px rgba(0,0,0,0.5); /* Smooth transition shadow */
             }
             
             .steps::before {
@@ -57,10 +56,10 @@ export default function Steps() {
                 top: 0;
                 left: 0;
                 right: 0;
-                height: 300px;
-                background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(34,8,3,0.5) 100%);
+                height: 100%;
+                background: radial-gradient(circle at top, rgba(255,87,34,0.15) 0%, transparent 70%);
                 pointer-events: none;
-                mix-blend-mode: multiply;
+                z-index: 0;
             }
             
             .steps .section-header {

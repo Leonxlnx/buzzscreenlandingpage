@@ -124,6 +124,8 @@ export default function Hero() {
               pointer-events: none;
               z-index: 1;
               overflow: visible;
+              opacity: 0;
+              animation: fadeIn 3s ease-in-out 1s forwards;
           }
           
           .particles span {

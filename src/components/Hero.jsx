@@ -23,7 +23,7 @@ export default function Hero() {
                         <ArrowRight size={18} style={{ marginLeft: 8 }} />
                     </a>
                 </div>
-                <p className="sub-cta animate-fade" style={{ animationDelay: '1s' }}>Start for free · No credit card required</p>
+                <p className="sub-cta animate-fade" style={{ animationDelay: '1s', opacity: 0, animation: 'fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards' }}>Start for free · No credit card required</p>
 
                 <div className="feature-pills animate-fade" style={{ animationDelay: '1.1s' }}>
                     <span className="pill">Browser extension</span>
@@ -210,7 +210,6 @@ export default function Hero() {
               color: var(--text-secondary);
               font-size: 0.9rem;
               margin-bottom: 32px;
-              opacity: 0;
           }
           
           .feature-pills {

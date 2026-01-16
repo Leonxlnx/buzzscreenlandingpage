@@ -8,6 +8,7 @@ export default function Hero() {
             <div className="particles">
                 <span></span><span></span><span></span><span></span><span></span>
                 <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
             </div>
             <div className="container hero-content">
                 <div className="badge animate-fade" style={{ animationDelay: '0.3s' }}>
@@ -127,13 +128,29 @@ export default function Hero() {
           
           .particles span {
               position: absolute;
-              width: 6px;
-              height: 6px;
-              background: radial-gradient(circle, rgba(255,122,80,0.9) 0%, rgba(255,87,34,0.4) 100%);
+              width: 8px;
+              height: 8px;
+              background: radial-gradient(circle, rgba(255,122,80,1) 0%, rgba(255,87,34,0.5) 100%);
               border-radius: 50%;
-              box-shadow: 0 0 10px rgba(255,87,34,0.6), 0 0 20px rgba(255,87,34,0.3);
+              box-shadow: 0 0 12px rgba(255,87,34,0.8), 0 0 25px rgba(255,87,34,0.4);
               animation: floatUp 8s ease-in-out infinite;
           }
+          
+          .particles span:nth-child(1) { left: 8%; animation-delay: 0s; animation-duration: 7s; width: 10px; height: 10px; }
+          .particles span:nth-child(2) { left: 15%; animation-delay: 1s; animation-duration: 9s; width: 6px; height: 6px; }
+          .particles span:nth-child(3) { left: 25%; animation-delay: 2s; animation-duration: 6s; width: 9px; height: 9px; }
+          .particles span:nth-child(4) { left: 35%; animation-delay: 0.5s; animation-duration: 8s; width: 7px; height: 7px; }
+          .particles span:nth-child(5) { left: 45%; animation-delay: 3s; animation-duration: 10s; width: 11px; height: 11px; }
+          .particles span:nth-child(6) { left: 55%; animation-delay: 1.5s; animation-duration: 7s; width: 6px; height: 6px; }
+          .particles span:nth-child(7) { left: 65%; animation-delay: 2.5s; animation-duration: 9s; width: 10px; height: 10px; }
+          .particles span:nth-child(8) { left: 72%; animation-delay: 0.8s; animation-duration: 6s; width: 7px; height: 7px; }
+          .particles span:nth-child(9) { left: 80%; animation-delay: 4s; animation-duration: 11s; width: 9px; height: 9px; }
+          .particles span:nth-child(10) { left: 88%; animation-delay: 1.2s; animation-duration: 8s; width: 5px; height: 5px; }
+          .particles span:nth-child(11) { left: 22%; animation-delay: 0.3s; animation-duration: 7s; width: 8px; height: 8px; }
+          .particles span:nth-child(12) { left: 42%; animation-delay: 2.2s; animation-duration: 9s; width: 6px; height: 6px; }
+          .particles span:nth-child(13) { left: 58%; animation-delay: 1.8s; animation-duration: 8s; width: 10px; height: 10px; }
+          .particles span:nth-child(14) { left: 78%; animation-delay: 3.5s; animation-duration: 10s; width: 7px; height: 7px; }
+          .particles span:nth-child(15) { left: 92%; animation-delay: 0.6s; animation-duration: 6s; width: 8px; height: 8px; }
           
           .particles span:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 7s; }
           .particles span:nth-child(2) { left: 20%; animation-delay: 1s; animation-duration: 9s; width: 4px; height: 4px; }
@@ -187,7 +204,6 @@ export default function Hero() {
               color: var(--text-secondary);
               font-size: 0.9rem;
               margin-bottom: 32px;
-              opacity: 0.7;
           }
           
           .feature-pills {

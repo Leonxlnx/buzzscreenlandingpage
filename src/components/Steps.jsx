@@ -42,11 +42,11 @@ export default function Steps() {
             }
             
             .steps { 
-                padding: 220px 0 100px; 
-                margin-top: -120px;
+                padding: 180px 0 100px; 
+                margin-top: -180px;
                 position: relative;
                 z-index: 1;
-                background: linear-gradient(180deg, #1a0703 0%, #2a0a04 20%, #381101 45%, #0d0d0d 100%);
+                background: linear-gradient(180deg, #1a0703 0%, #2a0a04 25%, #381101 50%, #0d0d0d 100%);
             }
             
             .steps::before {

@@ -102,6 +102,18 @@ export default function Hero() {
              background-repeat: no-repeat;
           }
           
+          .hero::after {
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              height: 300px;
+              background: linear-gradient(180deg, transparent 0%, #1a0703 100%);
+              pointer-events: none;
+              z-index: 0;
+          }
+          
           .hero-content {
               position: relative;
               z-index: 2;

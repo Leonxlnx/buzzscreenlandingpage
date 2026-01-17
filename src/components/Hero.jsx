@@ -1,304 +1,131 @@
-import { ArrowRight } from 'lucide-react';
-import heroBg from '../assets/herobg.webp';
+import { ArrowRight, Play, Mic, Monitor } from 'lucide-react';
+import { Button } from './ui/MovingBorder';
 
 export default function Hero() {
     return (
-        <section className="hero" style={{ backgroundImage: `url(${heroBg})` }}>
-            <div className="hero-overlay"></div>
-            <div className="particles">
-                <span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <div className="container hero-content">
-                <div className="badge animate-fade" style={{ animationDelay: '0.3s' }}>
-                    <span className="badge-dot"></span>
-                    Now in early access
+        <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 text-center overflow-visible z-10 w-full rounded-md flex md:items-center md:justify-center antialiased bg-grid-white/[0.02] relative overflow-hidden">
+             
+            {/* Local Grid with Radial Mask */}
+            <div className="absolute inset-0 z-[-1] opacity-[0.15] pointer-events-none"
+                style={{
+                    backgroundImage: `linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)`,
+                    backgroundSize: '40px 40px',
+                    maskImage: 'radial-gradient(circle at center, black 0%, transparent 70%)',
+                    WebkitMaskImage: 'radial-gradient(circle at center, black 0%, transparent 70%)'
+                }}
+            />
+
+            {/* Content Container */}
+            <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+                
+                {/* Badge - Glassmorphism */}
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8 hover:bg-white/10 transition-colors cursor-default animate-fade-in opacity-0 shadow-lg shadow-black/20" style={{ animationDelay: '0.1s' }}>
+                    <span className="flex h-2 w-2 relative">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
+                    </span>
+                    <span className="text-xs font-medium text-white tracking-wide uppercase">BuzzScreen v1.0</span>
                 </div>
-                <h1 className="animate-fade" style={{ animationDelay: '0.5s' }}>Record. Edit. Share.<br /><span className="gradient-text">In seconds.</span></h1>
-                <p className="subhead animate-fade" style={{ animationDelay: '0.7s' }}>Record fast. Make it clear with simple edits. Share instantly.</p>
-                <div className="cta-group animate-fade" style={{ animationDelay: '0.9s' }}>
-                    <a href="#" className="btn btn-hero">
-                        Get Started Free
-                        <ArrowRight size={18} style={{ marginLeft: 8 }} />
+
+                {/* Heading */}
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tighter text-white animate-fade-in opacity-0 leading-[1.1] max-w-5xl mx-auto drop-shadow-2xl" style={{ animationDelay: '0.2s' }}>
+                    Your screen recording, <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand to-[#FF9E66]">simplified.</span>
+                </h1>
+
+                {/* Subheading */}
+                <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-in opacity-0 font-light" style={{ animationDelay: '0.3s' }}>
+                    Record, edit, and share professional video messages in seconds. 
+                    <span className="text-white font-medium"> No clunky software. No rendering times.</span>
+                </p>
+
+                {/* CTA Group */}
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-20 animate-fade-in opacity-0" style={{ animationDelay: '0.4s' }}>
+                    {/* Aceternity Moving Border Button */}
+                    <Button
+                        borderRadius="1.75rem"
+                        className="bg-white text-black border-neutral-200 dark:border-slate-800 font-semibold text-lg"
+                        borderClassName="bg-[radial-gradient(var(--brand)_40%,transparent_60%)]"
+                    >
+                        Start for Free
+                    </Button>
+
+                    <a href="#features" className="h-14 px-8 rounded-full border border-white/20 bg-transparent text-white font-medium text-lg flex items-center justify-center gap-2 hover:bg-white/5 backdrop-blur-sm transition-all duration-300">
+                        How it Works
                     </a>
                 </div>
-                <p className="sub-cta animate-fade" style={{ animationDelay: '1s', opacity: 0, animation: 'fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards' }}>Start for free · No credit card required</p>
 
-                <div className="feature-pills animate-fade" style={{ animationDelay: '1.1s' }}>
-                    <span className="pill">Browser extension</span>
-                    <span className="pill">Cloud editor</span>
-                    <span className="pill">Instant sharing</span>
-                </div>
+                {/* Browser Mockup Container */}
+                <div className="relative max-w-5xl mx-auto animate-fade-in opacity-0" style={{ animationDelay: '0.6s' }}>
+                    
+                    {/* Glow Effect behind mockup */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-brand/30 blur-[100px] -z-10 rounded-full"></div>
+                    
+                    {/* The Mockup Frame */}
+                    <div className="relative rounded-xl bg-[#121212] border border-white/10 shadow-2xl overflow-hidden ring-1 ring-white/5 backdrop-blur-xl group">
+                        
+                        {/* Traffic Lights */}
+                        <div className="h-10 bg-[#1A1A1A]/90 backdrop-blur border-b border-white/5 flex items-center px-4 gap-2">
+                            <div className="flex gap-2">
+                                <div className="w-3 h-3 rounded-full bg-[#FF5F57]"></div>
+                                <div className="w-3 h-3 rounded-full bg-[#FEBC2E]"></div>
+                                <div className="w-3 h-3 rounded-full bg-[#28C840]"></div>
+                            </div>
+                            <div className="flex-1 text-center">
+                                <span className="text-xs text-zinc-600 font-medium bg-[#111] px-3 py-1 rounded-md border border-white/5">buzzscreen.com/edit/demo</span>
+                            </div>
+                        </div>
 
-                <div className="browser-mockup animate-fade-up" style={{ animationDelay: '1.3s' }}>
-                    <div className="mockup-header">
-                        <div className="dots">
-                            <span></span><span></span><span></span>
-                        </div>
-                        <div className="address-bar">
-                            buzzscreen.com
-                        </div>
-                    </div>
-                    <div className="mockup-content">
-                        <div className="dashboard-placeholder">
-                            <div className="dash-sidebar"></div>
-                            <div className="dash-main">
-                                <div className="dash-header"></div>
-                                <div className="dash-grid">
-                                    <div className="dash-card"></div>
-                                    <div className="dash-card"></div>
-                                    <div className="dash-card"></div>
+                        {/* Editor Interface Mockup */}
+                        <div className="aspect-[16/9] bg-[#0E0E0F] relative flex overflow-hidden">
+                            {/* Left Toolbar */}
+                            <div className="w-14 bg-[#121212]/90 backdrop-blur-md border-r border-white/5 flex flex-col items-center py-6 gap-6 z-10">
+                                <div className="w-8 h-8 rounded-lg bg-brand/20 text-brand flex items-center justify-center"><Monitor size={18} /></div>
+                                <div className="w-8 h-8 rounded-lg text-zinc-600 flex items-center justify-center hover:bg-white/5 hover:text-white transition-colors"><Mic size={18} /></div>
+                            </div>
+
+                            {/* Canvas */}
+                            <div className="flex-1 relative flex items-center justify-center bg-[#0E0E0F]">
+                                {/* Grid Background inside canvas */}
+                                <div className="absolute inset-0 opacity-[0.1]"
+                                    style={{ backgroundImage: `radial-gradient(#333 1px, transparent 1px)`, backgroundSize: '20px 20px' }}
+                                />
+                                
+                                {/* Video Content Placeholder */}
+                                <div className="relative w-[75%] aspect-video bg-zinc-900 rounded-lg shadow-2xl border border-white/10 overflow-hidden group-hover:scale-[1.01] transition-transform duration-700">
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-brand/5 to-transparent mix-blend-overlay"></div>
+                                    <img src="https://images.unsplash.com/photo-1603575448878-868a20723f5d?q=80&w=2070&auto=format&fit=crop" alt="Dashboard" className="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-700" />
+                                    
+                                    {/* Floating Webcam */}
+                                    <div className="absolute bottom-4 left-4 w-20 h-20 rounded-full border-2 border-brand overflow-hidden shadow-lg z-20 bg-zinc-800">
+                                         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" className="w-full h-full object-cover" />
+                                    </div>
+                                    
+                                    {/* Play Button */}
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-lg group-hover:scale-110 transition-transform cursor-pointer">
+                                            <Play fill="white" className="ml-1 text-white" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Timeline */}
+                            <div className="absolute bottom-0 left-14 right-0 h-16 bg-[#121212]/90 backdrop-blur-md border-t border-white/5 flex flex-col justify-center px-4 z-10">
+                                <div className="flex gap-1 h-8 items-center">
+                                    <div className="w-32 h-6 bg-brand/20 rounded-md border border-brand/30"></div>
+                                    <div className="w-48 h-6 bg-blue-500/20 rounded-md border border-blue-500/30"></div>
+                                    <div className="w-24 h-6 bg-zinc-700/50 rounded-md border border-zinc-700"></div>
+                                </div>
+                                {/* Playhead */}
+                                <div className="absolute top-0 bottom-0 left-1/3 w-[1px] bg-brand z-20 h-full">
+                                    <div className="absolute top-0 -left-1.5 w-3 h-3 bg-brand rotate-45"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <style>{`
-          /* Premium Animations */
-          @keyframes fadeIn {
-              from { opacity: 0; transform: translateY(20px); }
-              to { opacity: 1; transform: translateY(0); }
-          }
-          @keyframes fadeUp {
-              from { opacity: 0; transform: translateY(60px); }
-              to { opacity: 1; transform: translateY(0); }
-          }
-          @keyframes overlayFade {
-              from { opacity: 1; }
-              to { opacity: 0; }
-          }
-          
-          .animate-fade {
-              opacity: 0;
-              animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-          }
-          .animate-fade-up {
-              opacity: 0;
-              animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-          }
-          
-          .hero-overlay {
-              position: absolute;
-              top: 0;
-              left: 0;
-              right: 0;
-              bottom: 0;
-              background: #0d0d0d;
-              animation: overlayFade 3.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-              pointer-events: none;
-              z-index: 1;
-          }
-          
-          .hero {
-             position: relative;
-             padding-top: 160px;
-             padding-bottom: 250px; /* Increased to allow overlap space */
-             text-align: center; 
-             overflow: hidden;
-             /* Background Image */
-             background-image: url(${heroBg});
-             background-size: cover;
-             background-position: center;
-             background-repeat: no-repeat;
-             /* Mask to fade out the bottom of the HERO IMAGE so global bg shows through */
-             mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-             -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-          }
-          
-          /* Removed ::after pseudo-element that was creating the hard line/fade to black */
-          
-          .hero-content {
-              position: relative;
-              z-index: 2;
-          }
-          
-          /* Floating Particles */
-          @keyframes floatUp {
-              0% { transform: translateY(0) scale(1); opacity: 0; }
-              10% { opacity: 0.8; }
-              90% { opacity: 0.6; }
-              100% { transform: translateY(-600px) scale(0.5); opacity: 0; }
-          }
-          
-          .particles {
-              position: absolute;
-              bottom: 20%;
-              left: 0;
-              right: 0;
-              height: 100px;
-              pointer-events: none;
-              z-index: 1;
-              overflow: visible;
-              opacity: 0;
-              animation: fadeIn 3s ease-in-out 1s forwards;
-          }
-          
-          .particles span {
-              position: absolute;
-              width: 5px;
-              height: 5px;
-              background: radial-gradient(circle, rgba(255,122,80,1) 0%, rgba(255,87,34,0.5) 100%);
-              border-radius: 50%;
-              box-shadow: 0 0 8px rgba(255,87,34,0.7), 0 0 16px rgba(255,87,34,0.3);
-              animation: floatUp 8s ease-in-out infinite;
-          }
-          
-          .particles span:nth-child(1) { left: 8%; animation-delay: 0s; animation-duration: 7s; width: 6px; height: 6px; }
-          .particles span:nth-child(2) { left: 15%; animation-delay: 1s; animation-duration: 9s; width: 4px; height: 4px; }
-          .particles span:nth-child(3) { left: 25%; animation-delay: 2s; animation-duration: 6s; width: 5px; height: 5px; }
-          .particles span:nth-child(4) { left: 35%; animation-delay: 0.5s; animation-duration: 8s; width: 4px; height: 4px; }
-          .particles span:nth-child(5) { left: 45%; animation-delay: 3s; animation-duration: 10s; width: 7px; height: 7px; }
-          .particles span:nth-child(6) { left: 55%; animation-delay: 1.5s; animation-duration: 7s; width: 4px; height: 4px; }
-          .particles span:nth-child(7) { left: 65%; animation-delay: 2.5s; animation-duration: 9s; width: 6px; height: 6px; }
-          .particles span:nth-child(8) { left: 72%; animation-delay: 0.8s; animation-duration: 6s; width: 5px; height: 5px; }
-          .particles span:nth-child(9) { left: 80%; animation-delay: 4s; animation-duration: 11s; width: 5px; height: 5px; }
-          .particles span:nth-child(10) { left: 88%; animation-delay: 1.2s; animation-duration: 8s; width: 3px; height: 3px; }
-          .particles span:nth-child(11) { left: 22%; animation-delay: 0.3s; animation-duration: 7s; width: 5px; height: 5px; }
-          .particles span:nth-child(12) { left: 42%; animation-delay: 2.2s; animation-duration: 9s; width: 4px; height: 4px; }
-          .particles span:nth-child(13) { left: 58%; animation-delay: 1.8s; animation-duration: 8s; width: 6px; height: 6px; }
-          .particles span:nth-child(14) { left: 78%; animation-delay: 3.5s; animation-duration: 10s; width: 4px; height: 4px; }
-          .particles span:nth-child(15) { left: 92%; animation-delay: 0.6s; animation-duration: 6s; width: 5px; height: 5px; }
-          
-          .particles span:nth-child(1) { left: 8%; animation-delay: 0s; animation-duration: 7s; width: 10px; height: 10px; }
-          .particles span:nth-child(2) { left: 15%; animation-delay: 1s; animation-duration: 9s; width: 6px; height: 6px; }
-          .particles span:nth-child(3) { left: 25%; animation-delay: 2s; animation-duration: 6s; width: 9px; height: 9px; }
-          .particles span:nth-child(4) { left: 35%; animation-delay: 0.5s; animation-duration: 8s; width: 7px; height: 7px; }
-          .particles span:nth-child(5) { left: 45%; animation-delay: 3s; animation-duration: 10s; width: 11px; height: 11px; }
-          .particles span:nth-child(6) { left: 55%; animation-delay: 1.5s; animation-duration: 7s; width: 6px; height: 6px; }
-          .particles span:nth-child(7) { left: 65%; animation-delay: 2.5s; animation-duration: 9s; width: 10px; height: 10px; }
-          .particles span:nth-child(8) { left: 72%; animation-delay: 0.8s; animation-duration: 6s; width: 7px; height: 7px; }
-          .particles span:nth-child(9) { left: 80%; animation-delay: 4s; animation-duration: 11s; width: 9px; height: 9px; }
-          .particles span:nth-child(10) { left: 88%; animation-delay: 1.2s; animation-duration: 8s; width: 5px; height: 5px; }
-          .particles span:nth-child(11) { left: 22%; animation-delay: 0.3s; animation-duration: 7s; width: 8px; height: 8px; }
-          .particles span:nth-child(12) { left: 42%; animation-delay: 2.2s; animation-duration: 9s; width: 6px; height: 6px; }
-          .particles span:nth-child(13) { left: 58%; animation-delay: 1.8s; animation-duration: 8s; width: 10px; height: 10px; }
-          .particles span:nth-child(14) { left: 78%; animation-delay: 3.5s; animation-duration: 10s; width: 7px; height: 7px; }
-          .particles span:nth-child(15) { left: 92%; animation-delay: 0.6s; animation-duration: 6s; width: 8px; height: 8px; }
-
-          .badge {
-             display: inline-flex;
-             align-items: center;
-             gap: 8px;
-             padding: 8px 16px;
-             background: #141414;
-             border-radius: 100px;
-             font-size: 0.85rem;
-             color: var(--text-secondary);
-             box-shadow: var(--shadow-soft-out);
-             border: 1px solid rgba(255,255,255,0.02);
-             margin-bottom: 40px;
-          }
-          .badge-dot {
-              width: 8px; height: 8px; background: var(--accent-orange); border-radius: 50%;
-              box-shadow: 0 0 10px var(--accent-orange);
-          }
-          
-          .hero h1 { 
-              font-size: 4.2rem; 
-              line-height: 1.15; 
-              margin-bottom: 24px;
-              text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-          }
-          .gradient-text {
-              background: var(--gradient-orange);
-              -webkit-background-clip: text; 
-              -webkit-text-fill-color: transparent;
-          }
-          .hero .subhead {
-              font-size: 1.15rem;
-              color: var(--text-secondary);
-              max-width: 480px;
-              margin: 0 auto 40px;
-              line-height: 1.6;
-          }
-          .cta-group { display: flex; justify-content: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
-          
-          .sub-cta {
-              color: var(--text-secondary);
-              font-size: 0.9rem;
-              margin-bottom: 32px;
-          }
-          
-          .feature-pills {
-              display: flex;
-              justify-content: center;
-              gap: 12px;
-              margin-bottom: 60px;
-              flex-wrap: wrap;
-          }
-          .pill {
-              padding: 8px 16px;
-              background: rgba(255,255,255,0.03);
-              border: 1px solid rgba(255,255,255,0.06);
-              border-radius: 100px;
-              font-size: 0.8rem;
-              color: var(--text-secondary);
-              transition: all 0.3s;
-          }
-          .pill:hover {
-              background: rgba(255,255,255,0.06);
-              color: white;
-          }
-
-          .browser-mockup {
-             background: #141414;
-             border-radius: 20px;
-             border: 1px solid rgba(255,255,255,0.05);
-             max-width: 960px;
-             margin: 0 auto;
-             box-shadow: 
-                0 40px 80px rgba(0,0,0,0.5),
-                0 0 0 1px rgba(255,255,255,0.05);
-             overflow: hidden;
-          }
-          .mockup-header { 
-              padding: 14px 20px; 
-              display: flex; 
-              align-items: center; 
-              gap: 16px; 
-              background: rgba(20,20,20,0.5);
-              border-bottom: 1px solid rgba(255,255,255,0.03);
-          }
-          .dots { display: flex; gap: 8px; }
-          .dots span { width: 12px; height: 12px; border-radius: 50%; background: #333; box-shadow: inset 1px 1px 2px rgba(0,0,0,0.5); }
-          .address-bar { 
-              flex: 1;
-              background: #0a0a0a;
-              height: 32px;
-              border-radius: 8px;
-              display: flex; align-items: center; justify-content: center;
-              font-size: 0.8rem; color: #555;
-              box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5), inset -1px -1px 3px rgba(255,255,255,0.05);
-              max-width: 350px; margin: 0 auto;
-          }
-          
-          .mockup-content { 
-              background: linear-gradient(135deg, #1c1c1c 0%, #141414 100%); 
-              min-height: 400px; 
-              padding: 24px;
-          }
-          .dashboard-placeholder {
-              display: flex; gap: 16px; height: 100%;
-          }
-          .dash-sidebar { width: 50px; background: rgba(0,0,0,0.2); border-radius: 10px; }
-          .dash-main { flex: 1; display: flex; flex-direction: column; gap: 16px; }
-          .dash-header { height: 50px; background: rgba(255,255,255,0.03); border-radius: 10px; }
-          .dash-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; flex: 1; }
-          .dash-card { 
-              background: rgba(255,255,255,0.02); 
-              border-radius: 10px;
-              border: 1px solid rgba(255,255,255,0.02);
-          }
-
-          @media (max-width: 768px) {
-              .hero { padding-top: 120px; }
-              .hero h1 { font-size: 2.8rem; }
-              .dash-grid { grid-template-columns: 1fr; }
-              .cta-group { flex-direction: column; align-items: center; }
-          }
-        `}</style>
         </section>
     );
 }

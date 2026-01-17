@@ -1,122 +1,80 @@
 import { Play, Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
-        <header className="header">
-            <div className="container header-container">
-                <div className="logo">
-                    <div className="logo-icon-wrap">
-                        <Play className="logo-icon" size={18} fill="#FF5722" stroke="none" />
+        <header className="fixed top-6 left-0 right-0 z-50 flex justify-center pointer-events-none px-4 lg:px-0">
+            <div 
+                className={`pointer-events-auto flex justify-between items-center w-full transition-all duration-500 ease-in-out
+                ${scrolled 
+                    ? 'max-w-[800px] bg-[#121212]/80 backdrop-blur-xl border border-white/10 shadow-2xl py-2.5 rounded-full' 
+                    : 'max-w-[1200px] bg-transparent border border-transparent py-4 rounded-xl'
+                }`}
+            >
+                <div className={`flex items-center gap-2.5 font-bold text-lg tracking-tight text-white transition-all duration-300 ${!scrolled && 'pl-4'}`}>
+                    <div className="w-8 h-8 rounded-full bg-zinc-800/80 flex items-center justify-center ring-1 ring-white/10">
+                        <Play className="ml-0.5" size={16} fill="#F9772E" stroke="none" />
                     </div>
                     <span>BuzzScreen</span>
                 </div>
-                <nav className={`nav ${mobileOpen ? 'mobile-open' : ''}`}>
-                    <a href="#features">Features</a>
-                    <a href="#testimonials">Testimonials</a>
-                    <a href="#pricing">Pricing</a>
+
+                {/* Desktop Nav */}
+                <nav className="hidden md:flex items-center gap-8">
+                    {['Features', 'Testimonials', 'Pricing'].map((item) => (
+                        <a 
+                            key={item} 
+                            href={`#${item.toLowerCase()}`}
+                            className="text-zinc-400 hover:text-white text-sm font-medium transition-colors duration-300"
+                        >
+                            {item}
+                        </a>
+                    ))}
                 </nav>
-                <div className="header-actions">
-                    <a href="#" className="btn btn-nav">Start Recording</a>
-                    <button className="mobile-toggle" onClick={() => setMobileOpen(!mobileOpen)}>
-                        {mobileOpen ? <X /> : <Menu />}
+
+                <div className={`flex items-center gap-3 transition-all duration-300 ${!scrolled && 'pr-4'}`}>
+                    <a href="#" className="hidden sm:inline-flex items-center justify-center px-5 py-2 rounded-full bg-white text-black text-sm font-semibold shadow-lg hover:bg-gray-100 hover:scale-105 transition-all duration-300">
+                        Start Recording
+                    </a>
+                    
+                    <button 
+                        className="md:hidden p-2 text-zinc-400 hover:text-white transition-colors"
+                        onClick={() => setMobileOpen(!mobileOpen)}
+                    >
+                        {mobileOpen ? <X size={20} /> : <Menu size={20} />}
                     </button>
                 </div>
             </div>
-            <style>{`
-          @keyframes navFadeIn {
-              from { opacity: 0; transform: translateY(-20px); }
-              to { opacity: 1; transform: translateY(0); }
-          }
-          
-          .header {
-             position: fixed;
-             top: 24px;
-             left: 0; 
-             right: 0;
-             z-index: 100;
-             display: flex;
-             justify-content: center;
-             pointer-events: none;
-             opacity: 0;
-             animation: navFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
-          }
-          .header-container { 
-             pointer-events: auto; /* Re-enable clicking on the navbar itself */
-             display: flex; 
-             justify-content: space-between; 
-             align-items: center; 
-             width: 100%;
-             max-width: 1000px; /* Floating island width */
-             background: rgba(13,13,13,0.85);
-             backdrop-filter: blur(16px);
-             -webkit-backdrop-filter: blur(16px);
-             border: 1px solid rgba(255,255,255,0.08);
-             border-radius: 100px; /* Fully rounded island */
-             padding: 10px 24px;
-             box-shadow: 
-                0 10px 30px rgba(0,0,0,0.3),
-                0 0 0 1px rgba(0,0,0,0.1);
-          }
-          .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.15rem; }
-          .logo-icon-wrap {
-              width: 32px;
-              height: 32px;
-              border-radius: 50%; /* Rounded icon background */
-              background: #1a1a1a;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
-          }
-          .nav { display: flex; gap: 32px; }
-          .nav a { 
-              color: var(--text-secondary); 
-              font-size: 0.9rem;
-              font-weight: 500;
-              transition: all 0.3s;
-              padding: 6px 0;
-          }
-          .nav a:hover { color: var(--text-primary); text-shadow: 0 0 12px rgba(255,255,255,0.4); }
-          
-          .header-actions { display: flex; gap: 12px; align-items: center; }
-          
-          /* Update button style for the pill navbar */
-          .btn-nav {
-              padding: 10px 20px;
-              border-radius: 100px; /* Pill button */
-              font-size: 0.85rem;
-          }
 
-          .mobile-toggle { display: none; background: none; border: none; color: white; cursor: pointer; }
-
-          @media (max-width: 1024px) {
-              .header { top: 16px; padding: 0 16px; }
-              .header-container { max-width: 100%; border-radius: 16px; }
-          }
-
-          @media (max-width: 768px) {
-              .nav {
-                  display: none;
-                  position: absolute;
-                  top: calc(100% + 12px);
-                  left: 0;
-                  right: 0;
-                  background: #141414;
-                  flex-direction: column;
-                  padding: 24px;
-                  border-radius: 16px;
-                  border: 1px solid rgba(255,255,255,0.08);
-                  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-                  gap: 20px;
-                  align-items: center;
-              }
-              .nav.mobile-open { display: flex; }
-              .mobile-toggle { display: block; }
-          }
-        `}</style>
+            {/* Mobile Nav */}
+            <div className={`
+                absolute top-full mt-4 left-4 right-4 p-6 bg-[#121212] backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl flex-col items-center gap-5 pointer-events-auto transition-all duration-300 origin-top
+                ${mobileOpen ? 'flex opacity-100 scale-100 translate-y-0' : 'hidden opacity-0 scale-95 -translate-y-4'}
+            `}>
+                {['Features', 'Testimonials', 'Pricing'].map((item) => (
+                    <a 
+                        key={item} 
+                        href={`#${item.toLowerCase()}`}
+                        className="text-zinc-400 hover:text-white font-medium text-lg w-full text-center py-2"
+                        onClick={() => setMobileOpen(false)}
+                    >
+                        {item}
+                    </a>
+                ))}
+                <a href="#" className="w-full text-center py-3 rounded-xl bg-white text-black font-semibold transition-colors">
+                    Start Recording
+                </a>
+            </div>
         </header>
     );
 }

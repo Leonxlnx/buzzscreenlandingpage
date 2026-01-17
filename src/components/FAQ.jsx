@@ -14,8 +14,8 @@ export default function FAQ() {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: container.current,
-                start: "top 85%", // Trigger earlier
-                toggleActions: "play none none none" // Play once, never hide again
+                start: "top 85%",
+                toggleActions: "play none none none"
             }
         });
 
@@ -25,7 +25,7 @@ export default function FAQ() {
                 opacity: 0,
                 duration: 0.5,
                 stagger: 0.1,
-                clearProps: "all" // Clear GSAP styles after animation to let CSS hover work
+                clearProps: "all"
             }, "-=0.2");
 
     }, { scope: container });
@@ -40,135 +40,52 @@ export default function FAQ() {
     ];
 
     return (
-        <section className="faq" ref={container}>
-            <div className="container faq-container">
-                <div className="section-header">
-                    <h2>FAQ</h2>
-                    <p className="section-sub">Frequently Asked Questions</p>
+        <section className="py-32 relative z-10" ref={container}>
+             {/* Local Grid with Radial Mask */}
+             <div className="absolute inset-0 z-[-1] opacity-[0.05] pointer-events-none"
+                style={{
+                    backgroundImage: `linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)`,
+                    backgroundSize: '40px 40px',
+                    maskImage: 'radial-gradient(circle at center, black 0%, transparent 70%)',
+                    WebkitMaskImage: 'radial-gradient(circle at center, black 0%, transparent 70%)'
+                }}
+            />
+
+            <div className="container mx-auto px-6 max-w-4xl relative z-10">
+                <div className="section-header text-center mb-16">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">FAQ</h2>
+                    <p className="text-xl text-zinc-400">Frequently Asked Questions</p>
                 </div>
-                <div className="faq-list">
+                
+                <div className="flex flex-col gap-4">
                     {faqs.map((faq, index) => (
                         <div
-                            className={`faq-item soft-card ${openIndex === index ? 'active' : ''}`}
+                            className={`faq-item group cursor-pointer border rounded-2xl overflow-hidden transition-all duration-300
+                            ${openIndex === index 
+                                ? 'bg-zinc-900/80 border-brand/50 shadow-[0_0_30px_rgba(249,119,46,0.15)]' 
+                                : 'bg-zinc-900/40 border-white/5 hover:bg-zinc-900/60 hover:border-white/10'
+                            }`}
                             key={index}
                             onClick={() => setOpenIndex(openIndex === index ? null : index)}
                         >
-                            <div className="faq-question">
-                                <span>{faq.q}</span>
-                                <div className="faq-icon">
-                                    {openIndex === index ? <ChevronUp size={22} /> : <ChevronDown size={22} />}
+                            <div className="flex justify-between items-center p-6 md:p-8">
+                                <span className={`font-semibold text-lg md:text-xl transition-colors ${openIndex === index ? 'text-white' : 'text-zinc-300 group-hover:text-white'}`}>
+                                    {faq.q}
+                                </span>
+                                <div className={`w-8 h-8 flex items-center justify-center rounded-lg transition-all duration-300 ${openIndex === index ? 'bg-brand text-white rotate-180' : 'bg-white/5 text-zinc-400 group-hover:bg-white/10'}`}>
+                                    <ChevronDown size={20} />
                                 </div>
                             </div>
-                            <div className={`faq-answer ${openIndex === index ? 'open' : ''}`}>
-                                <p>{faq.a}</p>
+                            
+                            <div className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === index ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}>
+                                <p className="px-6 md:px-8 pb-8 text-zinc-400 leading-relaxed text-lg">
+                                    {faq.a}
+                                </p>
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
-            <style>{`
-                .faq { 
-                    padding: 120px 0;
-                    background: transparent;
-                }
-                
-                .faq-container {
-                    max-width: 800px;
-                }
-                
-                .faq .section-header h2 {
-                    font-size: 2.8rem;
-                    font-weight: 700;
-                    margin-bottom: 10px;
-                    color: white;
-                }
-                
-                .faq .section-sub {
-                    font-size: 1.15rem;
-                    color: var(--text-secondary);
-                }
-                
-                .faq-list { 
-                    margin-top: 60px; 
-                    display: flex; 
-                    flex-direction: column; 
-                    gap: 16px; 
-                }
-                
-                .faq-item { 
-                    padding: 0; 
-                    cursor: pointer;
-                    /* IMPORTANT: Do not use transition: all here, it fights GSAP */
-                    transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-                    overflow: hidden;
-                    /* Stronger Glass */
-                    background: rgba(10, 10, 10, 0.7);
-                    backdrop-filter: blur(20px);
-                    border: 1px solid rgba(255, 255, 255, 0.08);
-                    border-radius: 16px;
-                }
-                
-                .faq-item:hover {
-                    border-color: rgba(255,255,255,0.1);
-                    background: rgba(30,30,30,0.5);
-                }
-                
-                .faq-item.active {
-                    border-color: var(--accent-orange);
-                    background: linear-gradient(135deg, rgba(255,87,34,0.1) 0%, rgba(20,20,20,0.6) 100%);
-                    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-                }
-                
-                .faq-question { 
-                    display: flex; 
-                    justify-content: space-between; 
-                    padding: 24px 28px; 
-                    align-items: center; 
-                    font-weight: 600; 
-                    font-size: 1.1rem;
-                    color: white;
-                }
-                
-                .faq-icon {
-                    width: 32px;
-                    height: 32px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: 8px;
-                    background: rgba(255,255,255,0.05);
-                    color: var(--text-secondary);
-                    transition: all 0.3s ease;
-                }
-                
-                .faq-item.active .faq-icon {
-                    background: var(--accent-orange);
-                    color: white;
-                }
-                
-                .faq-answer { 
-                    max-height: 0;
-                    overflow: hidden;
-                    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                }
-                
-                .faq-answer.open {
-                    max-height: 200px;
-                }
-                
-                .faq-answer p {
-                    padding: 0 28px 24px;
-                    color: var(--text-secondary); 
-                    font-size: 1rem; 
-                    line-height: 1.7;
-                }
-                
-                @media (max-width: 768px) {
-                    .faq .section-header h2 {
-                        font-size: 2rem;
-                    }
-                }
-            `}</style>
         </section>
     );
 }

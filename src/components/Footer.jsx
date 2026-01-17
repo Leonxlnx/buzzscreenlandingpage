@@ -1,4 +1,4 @@
-import { Play, Globe, Shield } from 'lucide-react';
+import { Play, Globe, Shield, ArrowRight } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -13,168 +13,111 @@ export default function Footer() {
         gsap.from("footer", {
             scrollTrigger: {
                 trigger: container.current,
-                start: "top 90%",
+                start: "top 95%",
                 toggleActions: "play none none reverse"
             },
-            y: 50,
             opacity: 0,
-            duration: 1,
+            y: 20,
+            duration: 0.8,
             ease: "power2.out"
         });
     }, { scope: container });
 
     return (
-        <div ref={container}>
-            <footer>
-                <div className="container footer-grid">
-                    <div className="footer-brand-col">
-                        <span className="logo-text">
-                            <div className="footer-logo-icon">
-                                <Play size={14} fill="white" stroke="none" />
+        <div ref={container} className="relative z-50">
+            <footer className="pt-20 pb-10 bg-[#050505] border-t border-white/5 relative overflow-hidden">
+                
+                {/* Subtle Horizon Glow - Replaces Grid */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-24 bg-brand/5 blur-[100px] rounded-full pointer-events-none"></div>
+
+                <div className="container mx-auto px-6 max-w-7xl relative z-10">
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+                        
+                        {/* Brand Column */}
+                        <div className="md:col-span-5 flex flex-col items-start">
+                            <div className="flex items-center gap-3 mb-6 text-xl font-bold text-white tracking-tight">
+                                <div className="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center border border-white/10 shadow-inner">
+                                    <Play size={14} fill="white" stroke="none" className="ml-0.5" />
+                                </div>
+                                BuzzScreen
                             </div>
-                            BuzzCreen
-                        </span>
-                        <p className="footer-desc">Professional screen recording with zoom effects. Create, edit, and share videos instantly.</p>
+                            <p className="text-zinc-500 leading-relaxed text-sm max-w-md mb-8 font-medium">
+                                The fastest way to record and share video messages. 
+                                <br />Built for modern teams who value clarity over meetings.
+                            </p>
+                            
+                            {/* Newsletter Input - Cleaned up */}
+                            <div className="flex w-full max-w-sm gap-2">
+                                <input 
+                                    type="email" 
+                                    placeholder="email@example.com" 
+                                    className="bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-brand/30 focus:bg-white/10 transition-all flex-1"
+                                />
+                                <button className="bg-white text-black px-4 py-2.5 rounded-lg font-semibold text-sm hover:bg-zinc-200 transition-colors flex items-center gap-2">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Spacer */}
+                        <div className="md:col-span-1"></div>
+
+                        {/* Links Column */}
+                        <div className="md:col-span-2">
+                            <h4 className="text-xs font-semibold uppercase tracking-widest text-zinc-500 mb-6">Product</h4>
+                            <ul className="space-y-3">
+                                {['Features', 'Workflow', 'Use Cases', 'Extension', 'Changelog'].map((link) => (
+                                    <li key={link}>
+                                        <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">{link}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Links Column */}
+                        <div className="md:col-span-2">
+                            <h4 className="text-xs font-semibold uppercase tracking-widest text-zinc-500 mb-6">Company</h4>
+                            <ul className="space-y-3">
+                                {['About', 'Careers', 'Blog', 'Brand', 'Contact'].map((link) => (
+                                    <li key={link}>
+                                        <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">{link}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Links Column */}
+                        <div className="md:col-span-2">
+                            <h4 className="text-xs font-semibold uppercase tracking-widest text-zinc-500 mb-6">Legal</h4>
+                            <ul className="space-y-3">
+                                {['Privacy', 'Terms', 'Cookies', 'Security'].map((link) => (
+                                    <li key={link}>
+                                        <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">{link}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
 
-                    <div className="footer-links-col">
-                        <h4>Product</h4>
-                        <a href="#">Features</a>
-                        <a href="#">How It Works</a>
-                        <a href="#">Use Cases</a>
-                        <a href="#">Chrome Extension</a>
-                    </div>
-
-                    <div className="footer-links-col">
-                        <h4>Legal & Support</h4>
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                        <a href="#">Cookie Policy</a>
-                        <a href="#">Contact</a>
+                    {/* Bottom Bar - Minimalist */}
+                    <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-zinc-600">
+                        <div className="flex items-center gap-1">
+                            &copy; 2026 BuzzScreen Inc.
+                        </div>
+                        <div className="flex items-center gap-6">
+                            <a href="#" className="hover:text-zinc-400 transition-colors flex items-center gap-1.5">
+                                <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+                                Systems Operational
+                            </a>
+                            <div className="w-px h-3 bg-white/10"></div>
+                            <div className="flex items-center gap-1.5 cursor-pointer hover:text-zinc-400 transition-colors">
+                                <Globe size={12} />
+                                <span>EN</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div className="container footer-bottom">
-                    <div className="copyright">
-                        &copy; 2026 Buzzcreen. All rights reserved.
-                    </div>
-                    <div className="footer-certifications">
-                        <div className="cert-item">
-                            <Globe size={14} /> GDPR Compliant
-                        </div>
-                        <div className="cert-item">
-                            <Shield size={14} /> EU ODR Platform
-                        </div>
-                        <a href="#" className="cert-link">Your Rights</a>
-                    </div>
-                </div>
-
-                <style>{`
-                footer { 
-                    margin: 40px 20px 20px; 
-                    padding: 80px 0 40px; 
-                    background: rgba(10, 10, 10, 0.8); /* Semi transparent */
-                    backdrop-filter: blur(20px);
-                    border-radius: 30px; 
-                    border: 1px solid rgba(255,255,255,0.03); 
-                    box-shadow: 
-                        0 -10px 40px rgba(0,0,0,0.2),
-                        inset 0 1px 0 rgba(255,255,255,0.03);
-                }
-                
-                .footer-grid {
-                    display: grid;
-                    grid-template-columns: 2fr 1fr 1fr;
-                    gap: 60px;
-                    margin-bottom: 80px;
-                }
-                
-                .logo-text { 
-                    font-weight: 700; 
-                    font-size: 1.2rem; 
-                    display: flex; 
-                    align-items: center; 
-                    gap: 12px;
-                    margin-bottom: 20px;
-                    color: white;
-                }
-                
-                .footer-logo-icon { 
-                    width: 32px; height: 32px; 
-                    background: var(--surface-hover); 
-                    border-radius: 8px;
-                    display: flex; align-items: center; justify-content: center; 
-                    border: 1px solid rgba(255,255,255,0.05);
-                }
-                
-                .footer-desc {
-                    color: var(--text-secondary);
-                    line-height: 1.6;
-                    font-size: 0.95rem;
-                    max-width: 300px;
-                }
-                
-                .footer-links-col h4 {
-                    font-size: 0.9rem;
-                    font-weight: 600;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
-                    color: white;
-                    margin-bottom: 24px;
-                    opacity: 0.8;
-                }
-                
-                .footer-links-col {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 12px;
-                }
-                
-                .footer-links-col a {
-                    color: var(--text-secondary);
-                    font-size: 0.95rem;
-                    transition: color 0.2s;
-                }
-                
-                .footer-links-col a:hover {
-                    color: var(--accent-orange);
-                }
-                
-                .footer-bottom {
-                    padding-top: 40px;
-                    border-top: 1px solid rgba(255,255,255,0.03);
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    color: var(--text-secondary);
-                    font-size: 0.85rem;
-                }
-                
-                .footer-certifications {
-                    display: flex;
-                    gap: 24px;
-                    align-items: center;
-                }
-                
-                .cert-item {
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    opacity: 0.7;
-                }
-                
-                .cert-link {
-                    opacity: 0.7;
-                }
-                .cert-link:hover { opacity: 1; text-decoration: underline; }
-                
-                @media (max-width: 768px) { 
-                    footer { margin: 20px 10px 10px; border-radius: 20px; padding: 60px 0 30px; }
-                    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-                    .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
-                    .footer-certifications { justify-content: center; flex-wrap: wrap; }
-                }
-            `}</style>
             </footer>
         </div>
     );

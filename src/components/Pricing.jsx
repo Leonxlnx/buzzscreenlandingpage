@@ -115,8 +115,8 @@ export default function Pricing() {
                                             {plan.billing}
                                         </p>
                                         {plan.isPro && (
-                                            <p className="text-xs text-zinc-600">
-                                                ($288 per year)
+                                            <p className="text-xs text-zinc-600 font-medium">
+                                                $288 if paid yearly
                                             </p>
                                         )}
                                     </div>
